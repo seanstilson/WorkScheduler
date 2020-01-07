@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding HomePageVM, Source={StaticResource Locator}}"
+             x:Class="WorkScheduler.HomePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Text="New Job" BackgroundColor="Blue"
+                    TextColor="White" FontSize="17" HorizontalOptions="CenterAndExpand" WidthRequest="130" />
+            <Button Grid.Row="0" Grid.Column="2" Text="Schedule Change" BackgroundColor="Blue"
+                    TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand" WidthRequest="130"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="Final Review" BackgroundColor="Blue"
+                    TextColor="White" FontSize="17" HorizontalOptions="CenterAndExpand" WidthRequest="155"/>
+            <Button Grid.Row="2"  Grid.ColumnSpan="3"
+                    Text="Project Management" BackgroundColor="Blue" TextColor="White"
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+            <Button Grid.Row="3"  Grid.ColumnSpan="3"
+                    Text="Design" BackgroundColor="Blue" TextColor="White"
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+            <Button Grid.Row="4"  Grid.ColumnSpan="3"
+                    Text="Production" BackgroundColor="Blue" TextColor="White"
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+            <Button Grid.Row="5"  Grid.ColumnSpan="3"
+                    Text="Transportation" BackgroundColor="Blue" TextColor="White"
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+            <Button Grid.Row="6"  Grid.ColumnSpan="3"
+                    Text="Set Crew" BackgroundColor="Blue" TextColor="White"
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

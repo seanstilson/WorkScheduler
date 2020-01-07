@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             mc:Ignorable="d" x:Class="WorkScheduler.MainPage" Title="Blenker Work Scheduler">
+    <StackLayout Orientation="Vertical">
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Button BackgroundColor="Green" TextColor="White" Text="Design" Grid.Column="0" FontSize="12" Clicked="Button_Click"/>
+            <Button BackgroundColor="Blue" TextColor="White" Text="Production" Grid.Column="1" FontSize="12" Clicked="Button_Click"/>
+            <Button BackgroundColor="Orange" TextColor="Black" Text="Transportation" Grid.Column="2" FontSize="11" Clicked="Button_Click"/>
+            <Button BackgroundColor="Yellow" TextColor="Black" Text="Set Crew" Grid.Column="3" FontSize="12" Clicked="Button_Click"/>
+            <Button BackgroundColor="Red" TextColor="White" Text="Product Management" Grid.Column="4" FontSize="10" Clicked="Button_Click"/>
+        </Grid>
+        <Picker x:Name="displayTypePicker">
+            
+        </Picker>
+        <syncfusion:SfSchedule x:Name="schedule" AllowAppointmentDrag="True"
+                               ScheduleView="MonthView" VerticalOptions="FillAndExpand" ShowAppointmentsInline="True">
+            <syncfusion:SfSchedule.MonthViewSettings>
+                <syncfusion:MonthViewSettings
+                    AppointmentIndicatorCount="4"
+                    AppointmentDisplayMode="Appointment">
+                </syncfusion:MonthViewSettings>
+            </syncfusion:SfSchedule.MonthViewSettings>
+            <syncfusion:SfSchedule.DragDropSettings>
+                <syncfusion:DragDropSettings AllowNavigate="true" AllowScroll="False" ShowTimeIndicator="true" >
+            </syncfusion:DragDropSettings>
+            </syncfusion:SfSchedule.DragDropSettings>
+            <syncfusion:SfSchedule.ViewHeaderStyle>
+		    <syncfusion:ViewHeaderStyle
+				    BackgroundColor="#009688" 
+				    DayTextColor="#FFFFFF" 
+				    DateTextColor="#FFFFFF" 
+				    DayFontFamily="Arial" 
+				    DateFontFamily="Arial">
+		    </syncfusion:ViewHeaderStyle>
+	    </syncfusion:SfSchedule.ViewHeaderStyle>
+            <syncfusion:SfSchedule.AppointmentMapping>
+                <syncfusion:ScheduleAppointmentMapping
+                    SubjectMapping="ItemName"
+                    ColorMapping="Color"
+                    StartTimeMapping="From"
+                    EndTimeMapping="To"/>
+            </syncfusion:SfSchedule.AppointmentMapping>
+        </syncfusion:SfSchedule>
+    </StackLayout>
+</ContentPage>

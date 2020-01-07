@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkScheduler.NewAppointmentPage" Title="New Work Item">
+    <ContentPage.Content>
+        
+        <StackLayout Orientation="Vertical">
+            
+        <Label FontSize="Title" Text="New Work Item" HorizontalOptions="CenterAndExpand"/>
+        <Frame HasShadow="True" CornerRadius="10" BackgroundColor="DarkGray" HeightRequest="800">
+            <Grid Margin="10, 40, 10, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="120" />
+                    <RowDefinition Height="280" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Name:" HorizontalOptions="EndAndExpand"/>
+                <Entry Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand" WidthRequest="250" Text="{Binding ItemName, Mode=TwoWay}"
+                       x:Name="NameEntry"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Notes:" HorizontalOptions="EndAndExpand"/>
+                <Frame HasShadow="False" BorderColor="Silver" CornerRadius="5" Grid.Row="1" Grid.Column="1">
+                    <Editor  HorizontalOptions="StartAndExpand" WidthRequest="280" HeightRequest="100" Text="{Binding Description}" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                       HorizontalOptions="FillAndExpand" WidthRequest="800" Margin="0,30,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Start Date" VerticalOptions="EndAndExpand"/>
+                        <DatePicker Grid.Row="1" Grid.Column="0" Date="{Binding From, Mode=TwoWay}"/>
+
+                        <Label Grid.Row="0" Grid.Column="1" Text="End Date" VerticalOptions="EndAndExpand"/>
+                        <DatePicker Grid.Row="1" Grid.Column="1" Date="{Binding To, Mode=TwoWay}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Start Time" VerticalOptions="EndAndExpand"/>
+                        <TimePicker Grid.Row="3" Grid.Column="0" Time="{Binding FromTime}"/>
+
+                        <Label Grid.Row="2" Grid.Column="1" Text="End Time" VerticalOptions="EndAndExpand"/>
+                        <TimePicker Grid.Row="3" Grid.Column="1" Time="{Binding ToTime}"/>
+                    </Grid>
+                
+                </Frame>
+            </Grid>
+        </Frame>
+        <Button Text="Done" Clicked="Done_Clicked" FontSize="18"/>
+        <Button Text="Cancel" Clicked="Cancel_Clicked" FontSize="18"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
