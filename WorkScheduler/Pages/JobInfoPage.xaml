@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkScheduler.Pages.JobInfoPage">
+    <ContentPage.Content>
+        <Grid Margin="5,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="0" Grid.Column="0"
+                   BackgroundColor="Transparent">
+            </Frame>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="0"
+                   BackgroundColor="Transparent"/>
+            <Label Text="Job#" Style="{StaticResource labelStyle}" Grid.Row="0" Grid.Column="0"/>
+   
+            <Label Text="Job Type" Grid.Row="1" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="2" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Phase" Grid.Row="2" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Building System" Grid.Row="3" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="4" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Del. Date" Grid.Row="4" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="5" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Round Trip Miles" Grid.Row="5" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="6" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Are There Windows" Grid.Row="6" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="7" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Windows Installed" Grid.Row="7" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="8" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Window Del. Date" Grid.Row="8" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="9" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Wall Bdft. Est." Grid.Row="9" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="10" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="Floor Sqft Est." Grid.Row="10" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="11" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="FT Bdft Est." Grid.Row="11" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="11" Grid.Column="0" BackgroundColor="Transparent"/>
+            <Label Text="RT Bdft Est." Grid.Row="12" Grid.Column="0" Style="{StaticResource labelStyle}"/>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="12" Grid.Column="0" BackgroundColor="Transparent"/>
+
+
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="0" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Enter Job #" WidthRequest="100" Margin="5,5"/>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="2" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="3" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="4" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="5" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="6" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="7" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="8" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="9" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="10" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="11" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="12" Grid.Column="1"
+                   BackgroundColor="Transparent">
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

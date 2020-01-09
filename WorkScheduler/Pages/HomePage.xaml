@@ -20,7 +20,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Row="0" Grid.Column="0" Text="New Job" BackgroundColor="Blue"
-                    TextColor="White" FontSize="17" HorizontalOptions="CenterAndExpand" WidthRequest="130" />
+                    TextColor="White" FontSize="17" HorizontalOptions="CenterAndExpand" WidthRequest="130"
+                    Clicked="New_Job_Clicked"/>
             <Button Grid.Row="0" Grid.Column="2" Text="Schedule Change" BackgroundColor="Blue"
                     TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand" WidthRequest="130"/>
             <Button Grid.Row="1" Grid.Column="1" Text="Final Review" BackgroundColor="Blue"

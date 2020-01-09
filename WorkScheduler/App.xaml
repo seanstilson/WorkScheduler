@@ -7,5 +7,16 @@
              mc:Ignorable="d" x:Class="WorkScheduler.App">
     <Application.Resources>
         <viewModels:ViewModelLocator x:Key="Locator"/>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="WidthRequest" Value="150" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Helvetica"/>
+                <Setter Property="Margin" Value="8,0,0,0"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
