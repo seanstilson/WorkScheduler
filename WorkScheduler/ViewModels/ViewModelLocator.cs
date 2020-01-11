@@ -19,5 +19,14 @@ namespace WorkScheduler.ViewModels
             }
            
         }
+
+        public JobInfoPageViewModel JobInfoPageVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<JobInfoPageViewModel>();
+            }
+
+        }
     }
 }

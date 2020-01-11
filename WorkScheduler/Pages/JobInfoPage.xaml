@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WorkScheduler.Pages.JobInfoPage">
+             x:Class="WorkScheduler.Pages.JobInfoPage"
+             BindingContext="{Binding JobInfoPageVM, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <Grid Margin="5,5,0,0">
             <Grid.RowDefinitions>
@@ -75,18 +76,26 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
+            <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding JobTypes}"
+                    SelectedItem="{Binding SelectedJobType, Mode=TwoWay}" Margin="5,5"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="2" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
+            <Picker Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Phases}"
+                    SelectedItem="{Binding SelectedPhase, Mode=TwoWay}" Margin="5,5"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="3" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
+            <Picker Grid.Row="3" Grid.Column="1" ItemsSource="{Binding BuildingSystems}"
+                    SelectedItem="{Binding SelectedBuildingSystem, Mode=TwoWay}" Margin="5,5"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="4" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
+            <DatePicker Grid.Row="4" Grid.Column="1" Date="{Binding DeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="5" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
+            <Entry Grid.Row="5" Grid.Column="1" Placeholder="Enter miles" WidthRequest="100" Margin="5,5" Text="{Binding RountTripMilesString, Mode=TwoWay}"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="6" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
