@@ -103,6 +103,7 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="7" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
+             <Switch Grid.Row="7" Grid.Column="1" IsToggled="{Binding WindowsInstalled, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="8" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>

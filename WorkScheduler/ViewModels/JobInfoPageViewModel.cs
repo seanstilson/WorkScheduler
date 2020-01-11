@@ -31,6 +31,7 @@ namespace WorkScheduler.ViewModels
             DeliveryDate = DateTime.Today;
             RoundTripMiles = 0;
             HasWindows = true;
+            WindowsInstalled = false;
 
         }
 
@@ -49,6 +50,7 @@ namespace WorkScheduler.ViewModels
         public string RountTripMilesString => RoundTripMiles.ToString();
 
         public bool HasWindows { get; set; }
+        public bool WindowsInstalled { get; set; }
     }
 
 }
