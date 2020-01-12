@@ -11,5 +11,10 @@ namespace WorkScheduler.Pages
         {
             InitializeComponent();
         }
+
+        void OKButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace WorkScheduler.ViewModels
             RoundTripMiles = 0;
             HasWindows = true;
             WindowsInstalled = false;
+            WindowDeliveryDate = DateTime.Today;
 
         }
 
@@ -51,6 +52,14 @@ namespace WorkScheduler.ViewModels
 
         public bool HasWindows { get; set; }
         public bool WindowsInstalled { get; set; }
+
+        public DateTime WindowDeliveryDate { get; set; }
+
+        public Double WallBoardFeet { get; set; }
+        public string WallFeetString => WallBoardFeet.ToString("N2");
+
+        public Double FloorSquareFeet { get; set; }
+        public string FloorFeetString => FloorSquareFeet.ToString("N2");
     }
 
 }
