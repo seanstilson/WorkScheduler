@@ -26,7 +26,7 @@ namespace WorkScheduler
 
         public void New_Job_Clicked(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new JobInfoPage());
+            Navigation.PushModalAsync(new JobInfoPage());
         }
     }
 }

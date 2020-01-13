@@ -4,7 +4,7 @@
              x:Class="WorkScheduler.Pages.JobInfoPage"
              BindingContext="{Binding JobInfoPageVM, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" >
+        <StackLayout Orientation="Vertical" Margin="0,40,0,0">
         <Grid Margin="5,5,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
@@ -164,15 +164,14 @@
                    BackgroundColor="Transparent" Margin="0,0,5,0">
             </Frame>
             
-            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="9" Grid.Column="2"
-                   BackgroundColor="Transparent">
-            </Frame>
+            <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="9" Grid.Column="2" BackgroundColor="Transparent" />
+
             <Entry Grid.Row="9" Grid.Column="2" Placeholder="Footage sum" Margin="5,5"/>
             
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="10" Grid.Column="2"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="10" Grid.Column="2" Placeholder="Floor sum" Margin="5,5"/>
+            <Entry Grid.Row="10" Grid.Column="2" Placeholder="Floor sum" Margin="5,5" />
             <Frame BorderColor="Gray" CornerRadius="2" HasShadow="False" Grid.Row="11" Grid.Column="2"
                    BackgroundColor="Transparent" Margin="0,0,5,0">
             </Frame>
@@ -183,9 +182,9 @@
             <StackLayout Orientation="Horizontal">
                 <Button Text="Ok" HorizontalOptions="CenterAndExpand"
                     VerticalOptions="EndAndExpand" Margin="0,0,0,30"
-                        FontSize="18" WidthRequest="60" Clicked="OKButton_Clicked"/>
+                        FontSize="18" WidthRequest="60" Command="{Binding OkClickedCommand}" />
                 <Button Text="Cancel" HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="EndAndExpand" Margin="0,0,0,30" FontSize="18" WidthRequest="100"/>
+                    VerticalOptions="EndAndExpand" Margin="0,0,0,30" FontSize="18" WidthRequest="100" Command="{Binding CancelClickedCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

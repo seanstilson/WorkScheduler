@@ -17,6 +17,7 @@ namespace WorkScheduler
             ContainerBuilder builder = new ContainerBuilder();
             builder.RegisterType<HomePageViewModel>().AsSelf();
             builder.RegisterType<WorkScheduleService>().As<IWorkScheduleService>();
+            builder.RegisterType<CacheService>().As<ICacheService>();
             builder.RegisterType<JobInfoPageViewModel>().AsSelf();
 
             IContainer container = builder.Build();

@@ -1,12 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
+using WorkScheduler.Models;
+using Xamarin.Forms;
+using WorkScheduler.Services;
 
 namespace WorkScheduler.ViewModels
 {
     public class JobInfoPageViewModel : BasePageViewModel
     {
-        public JobInfoPageViewModel()
+        public ICommand OkClickedCommand { get; set; }
+        public ICommand CancelClickedCommand { get; set; }
+
+        public JobItem JobInfoItem { get; set; }
+        private ICacheService _cacheService;
+
+        public JobInfoPageViewModel(ICacheService cacheService)
         {
+            _cacheService = cacheService;
+
             JobTypes = new List<string>()
             {
                 "SF",
@@ -34,6 +46,54 @@ namespace WorkScheduler.ViewModels
             WindowsInstalled = false;
             WindowDeliveryDate = DateTime.Today;
 
+            OkClickedCommand = new Command(
+                execute: async () =>
+                 {
+                     JobInfoItem = new JobItem
+                     {
+                         DeliveryDate = DeliveryDate,
+                         FloorSquareFeet = FloorSquareFeet,
+                         HasWindows = HasWindows,
+                         RoundTripMiles = RoundTripMiles,
+                         SelectedBuildingSystem = SelectedBuildingSystem,
+                         SelectedJobType = SelectedJobType,
+                         SelectedPhase = SelectedPhase,
+                         WallBoardFeet = WallBoardFeet,
+                         WindowDeliveryDate = WindowDeliveryDate,
+                         WindowsInstalled = WindowsInstalled
+                     };
+
+                    await _cacheService.SaveJobItem(JobInfoItem);
+                    await App.Current.MainPage.Navigation.PopModalAsync();
+                 });
+
+            CancelClickedCommand = new Command(
+                execute: () =>
+                    {
+                        JobInfoItem = null;
+                        App.Current.MainPage.Navigation.PopModalAsync();
+                    }
+                );
+
+        }
+
+        public void TransferDataAndLeave()
+        {
+            JobInfoItem = new JobItem
+            {
+                DeliveryDate = DeliveryDate,
+                FloorSquareFeet = FloorSquareFeet,
+                HasWindows = HasWindows,
+                RoundTripMiles = RoundTripMiles,
+                SelectedBuildingSystem = SelectedBuildingSystem,
+                SelectedJobType = SelectedJobType,
+                SelectedPhase = SelectedPhase,
+                WallBoardFeet = WallBoardFeet,
+                WindowDeliveryDate = WindowDeliveryDate,
+                WindowsInstalled = WindowsInstalled
+            };
+
+            App.Current.MainPage.Navigation.PopModalAsync();
         }
 
         public List<String> JobTypes { get; set; }
@@ -60,6 +120,7 @@ namespace WorkScheduler.ViewModels
 
         public Double FloorSquareFeet { get; set; }
         public string FloorFeetString => FloorSquareFeet.ToString("N2");
+
     }
 
 }
