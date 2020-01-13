@@ -28,5 +28,10 @@ namespace WorkScheduler
         {
             Navigation.PushModalAsync(new JobInfoPage());
         }
+
+        void PMButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ProjectManagementPage());
+        }
     }
 }

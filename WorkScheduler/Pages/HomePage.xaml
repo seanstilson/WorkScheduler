@@ -28,7 +28,7 @@
                     TextColor="White" FontSize="17" HorizontalOptions="CenterAndExpand" WidthRequest="155"/>
             <Button Grid.Row="2"  Grid.ColumnSpan="3"
                     Text="Project Management" BackgroundColor="Blue" TextColor="White"
-                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40" Clicked="PMButton_Clicked"/>
             <Button Grid.Row="3"  Grid.ColumnSpan="3"
                     Text="Design" BackgroundColor="Blue" TextColor="White"
                     FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
