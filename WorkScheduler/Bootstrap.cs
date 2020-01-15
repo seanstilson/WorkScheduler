@@ -19,6 +19,7 @@ namespace WorkScheduler
             builder.RegisterType<WorkScheduleService>().As<IWorkScheduleService>();
             builder.RegisterType<CacheService>().As<ICacheService>();
             builder.RegisterType<JobInfoPageViewModel>().AsSelf();
+            builder.RegisterType<EmailService>().As<IEmailService>();
 
             IContainer container = builder.Build();
             AutofacServiceLocator asl = new AutofacServiceLocator(container);

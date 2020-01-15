@@ -4,6 +4,7 @@ using System.Windows.Input;
 using WorkScheduler.Models;
 using Xamarin.Forms;
 using WorkScheduler.Services;
+using System.Threading.Tasks;
 
 namespace WorkScheduler.ViewModels
 {
@@ -14,10 +15,12 @@ namespace WorkScheduler.ViewModels
 
         public JobItem JobInfoItem { get; set; }
         private ICacheService _cacheService;
+        private IEmailService _emailService;
 
-        public JobInfoPageViewModel(ICacheService cacheService)
+        public JobInfoPageViewModel(ICacheService cacheService, IEmailService emailService)
         {
             _cacheService = cacheService;
+            _emailService = emailService;
 
             JobTypes = new List<string>()
             {
@@ -64,6 +67,7 @@ namespace WorkScheduler.ViewModels
                      };
 
                     await _cacheService.SaveJobItem(JobInfoItem);
+                    await SendCompletionEmail();
                     await App.Current.MainPage.Navigation.PopModalAsync();
                  });
 
@@ -76,6 +80,13 @@ namespace WorkScheduler.ViewModels
                 );
 
         }
+
+        private async Task<bool> SendCompletionEmail()
+        {
+            string body = $"Sean Stilson has created a new {SelectedJobType} job for your review.";
+            return await _emailService.SendEmail("New Job Created", body, new List<string>() {"sean.stilson@mstc.edu"});
+        }
+
 
         public void TransferDataAndLeave()
         {
