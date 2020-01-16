@@ -84,7 +84,7 @@ namespace WorkScheduler.ViewModels
         private async Task<bool> SendCompletionEmail()
         {
             string body = $"Sean Stilson has created a new {SelectedJobType} job for your review.";
-            return await _emailService.SendEmail("New Job Created", body, new List<string>() {"sean.stilson@mstc.edu"});
+            return await _emailService.SendEmail("New Job Created", body, new List<string>() {"scott.jeffers@blenkerco.com"});
         }
 
 
