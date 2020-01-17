@@ -13,6 +13,8 @@ namespace WorkScheduler.Models
         public TimeSpan FromTime { get; set; }
         public TimeSpan ToTime { get; set; }
         public Color Color { get; set; }
+        public Department Department { get; set; }
+        public Assignee Assignee { get; set; }
 
         public WorkScheduleItem()
         {

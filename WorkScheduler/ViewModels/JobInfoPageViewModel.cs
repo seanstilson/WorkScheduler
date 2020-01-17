@@ -106,6 +106,7 @@ namespace WorkScheduler.ViewModels
 
             App.Current.MainPage.Navigation.PopModalAsync();
         }
+        public string JobName { get; set; }
 
         public List<String> JobTypes { get; set; }
         public string SelectedJobType { get; set; }

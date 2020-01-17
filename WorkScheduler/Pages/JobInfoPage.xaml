@@ -74,7 +74,7 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="0" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Enter Job #" WidthRequest="100" Margin="5,5"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Enter Job #" WidthRequest="100" Margin="5,5" Text="{Binding JobName, Mode=TwoWay}"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
