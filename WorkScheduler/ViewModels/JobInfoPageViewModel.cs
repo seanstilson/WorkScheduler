@@ -16,11 +16,14 @@ namespace WorkScheduler.ViewModels
         public JobItem JobInfoItem { get; set; }
         private ICacheService _cacheService;
         private IEmailService _emailService;
+        private ICapacityEngine _capacityEngine;
 
-        public JobInfoPageViewModel(ICacheService cacheService, IEmailService emailService)
+        public JobInfoPageViewModel(ICacheService cacheService,
+            IEmailService emailService, ICapacityEngine capacityEngine)
         {
             _cacheService = cacheService;
             _emailService = emailService;
+            _capacityEngine = capacityEngine;
 
             JobTypes = new List<string>()
             {
@@ -54,6 +57,7 @@ namespace WorkScheduler.ViewModels
                  {
                      JobInfoItem = new JobItem
                      {
+                         JobName = JobName,
                          DeliveryDate = DeliveryDate,
                          FloorSquareFeet = FloorSquareFeet,
                          HasWindows = HasWindows,
@@ -67,6 +71,9 @@ namespace WorkScheduler.ViewModels
                      };
 
                     await _cacheService.SaveJobItem(JobInfoItem);
+                    var schedule = await _capacityEngine.CalculateSchedules(JobInfoItem);
+
+                    await _cacheService.SaveJobSchedule(schedule);
                     await SendCompletionEmail();
                     await App.Current.MainPage.Navigation.PopModalAsync();
                  });

@@ -6,6 +6,6 @@ namespace WorkScheduler.Services
 {
     public interface ICapacityEngine
     {
-        Task CalculateSchedules(JobItem JobInfoItem);
+        Task<JobSchedule> CalculateSchedules(JobItem JobInfoItem);
     }
 }

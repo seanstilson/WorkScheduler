@@ -12,6 +12,8 @@ namespace WorkScheduler
     {
         private HomePageViewModel _viewModel => this.BindingContext as HomePageViewModel;
 
+        ObservableCollection<WorkScheduleItem> WorkItems;
+
         public HomePage()
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace WorkScheduler
         {
             base.OnAppearing();
 
-            ObservableCollection<WorkScheduleItem> workItems = await _viewModel.GetWorkItemsAsync();
+            WorkItems = await _viewModel.GetWorkItemsAsync();
         }
 
         public void New_Job_Clicked(object sender, EventArgs args)
@@ -32,6 +34,16 @@ namespace WorkScheduler
         void PMButton_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ProjectManagementPage());
+        }
+
+        void Schedule_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
+        }
+
+        void Design_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new PlanningPage());
         }
     }
 }

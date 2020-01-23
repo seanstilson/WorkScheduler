@@ -28,5 +28,13 @@ namespace WorkScheduler.ViewModels
             }
 
         }
+
+        public MainPageViewModel MainPageVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MainPageViewModel>();
+            }
+        }
     }
 }

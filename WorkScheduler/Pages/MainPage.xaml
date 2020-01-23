@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             mc:Ignorable="d" x:Class="WorkScheduler.MainPage" Title="Blenker Work Scheduler">
+             mc:Ignorable="d" x:Class="WorkScheduler.MainPage" Title="Blenker Work Scheduler"
+             BindingContext="{Binding MainPageVM, Source={StaticResource Locator}}">
     <StackLayout Orientation="Vertical">
         <Grid HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
@@ -27,7 +28,8 @@
             
         </Picker>
         <syncfusion:SfSchedule x:Name="schedule" AllowAppointmentDrag="True"
-                               ScheduleView="MonthView" VerticalOptions="FillAndExpand" ShowAppointmentsInline="True">
+                               ScheduleView="MonthView" VerticalOptions="FillAndExpand"
+                               ShowAppointmentsInline="True" DataSource="{Binding WorkItems}">
             <syncfusion:SfSchedule.MonthViewSettings>
                 <syncfusion:MonthViewSettings
                     AppointmentIndicatorCount="4"
@@ -35,7 +37,7 @@
                 </syncfusion:MonthViewSettings>
             </syncfusion:SfSchedule.MonthViewSettings>
             <syncfusion:SfSchedule.DragDropSettings>
-                <syncfusion:DragDropSettings AllowNavigate="true" AllowScroll="False" ShowTimeIndicator="true" >
+                <syncfusion:DragDropSettings AllowNavigate="true" AllowScroll="True" ShowTimeIndicator="true" >
             </syncfusion:DragDropSettings>
             </syncfusion:SfSchedule.DragDropSettings>
             <syncfusion:SfSchedule.ViewHeaderStyle>
@@ -49,10 +51,11 @@
 	    </syncfusion:SfSchedule.ViewHeaderStyle>
             <syncfusion:SfSchedule.AppointmentMapping>
                 <syncfusion:ScheduleAppointmentMapping
-                    SubjectMapping="ItemName"
+                    SubjectMapping="Description"
                     ColorMapping="Color"
                     StartTimeMapping="From"
-                    EndTimeMapping="To"/>
+                    EndTimeMapping="To"
+                    IsAllDayMapping="IsAllDay"/>
             </syncfusion:SfSchedule.AppointmentMapping>
         </syncfusion:SfSchedule>
     </StackLayout>

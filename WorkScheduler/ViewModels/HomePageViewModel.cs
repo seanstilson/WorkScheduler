@@ -8,16 +8,16 @@ namespace WorkScheduler.ViewModels
 {
     public class HomePageViewModel : BasePageViewModel
     {
-        IWorkScheduleService _workScheduleService;
+        ICacheService _cacheService;
 
-        public HomePageViewModel(IWorkScheduleService workScheduleService)
+        public HomePageViewModel(ICacheService cacheService)
         {
-            _workScheduleService = workScheduleService;
+            _cacheService = cacheService;
         }
 
         public async Task<ObservableCollection<WorkScheduleItem>> GetWorkItemsAsync()
         {
-            return await _workScheduleService.GetWorkScheduleItems();
+            return await _cacheService.GetAllWorkItems();
         }
     }
 }

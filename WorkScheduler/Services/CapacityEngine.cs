@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading.Tasks;
+using Akavache;
 using WorkScheduler.Enums;
 using WorkScheduler.Models;
 
@@ -15,7 +16,7 @@ namespace WorkScheduler.Services
         {
         }
 
-        public Task CalculateSchedules(JobItem JobInfoItem)
+        public Task<JobSchedule> CalculateSchedules(JobItem JobInfoItem)
         {
             CurrentJobItem = JobInfoItem;
 
@@ -28,8 +29,11 @@ namespace WorkScheduler.Services
 
             JobSchedule = new JobSchedule();
             JobSchedule.DesignItem = CreateScheduleItem(totalDesign, Enumerations.Department.Design);
-
-            return Task.CompletedTask;
+            JobSchedule.ProductionItem = CreateScheduleItem(totalProduction, Enumerations.Department.Production);
+            JobSchedule.TransportationItem = CreateScheduleItem(totalTransportation, Enumerations.Department.Transportation);
+            JobSchedule.ReviewItem = CreateScheduleItem(totalReview, Enumerations.Department.FinalReview);
+            
+            return Task.FromResult(JobSchedule);
         }
 
         private WorkScheduleItem CreateScheduleItem(Double hours, Enumerations.Department department)
@@ -37,7 +41,8 @@ namespace WorkScheduler.Services
             Double days = hours / 10;
             if (days < 1) days = 1;
 
-            WorkScheduleItem item = new WorkScheduleItem();
+            WorkScheduleItem item = new WorkScheduleItem() { Id = Guid.NewGuid(), ParentId = JobSchedule.Id };
+            item.Department = new Department(Guid.NewGuid()) { name = department.ToString() };
             item.Description = $"{CurrentJobItem.JobName} - {item.Department.name}";
             item.FromTime = TimeSpan.FromHours(7);
             item.ToTime = TimeSpan.FromHours(18);
@@ -47,8 +52,7 @@ namespace WorkScheduler.Services
             switch (department)
             {
                 case Enumerations.Department.Design:
-                    {
-                        item.Department = new Department(Guid.NewGuid()) { name = "Design" };  
+                    { 
                         item.Color = Color.Green;
                         item.From = DateTime.Now;
                         item.To = item.From + TimeSpan.FromDays(days);
@@ -56,9 +60,22 @@ namespace WorkScheduler.Services
                     }
                 case Enumerations.Department.Production:
                     {
-                        item.Department = new Department(Guid.NewGuid()) { name = "Production" };
                         item.Color = Color.Blue;
                         item.From = JobSchedule.DesignItem.To;
+                        item.To = item.From + TimeSpan.FromDays(days);
+                        return item;
+                    }
+                case Enumerations.Department.Transportation:
+                    {
+                        item.Color = Color.Orange;
+                        item.From = JobSchedule.ProductionItem.To;
+                        item.To = item.From + TimeSpan.FromDays(days);
+                        return item;
+                    }
+                case Enumerations.Department.FinalReview:
+                    {
+                        item.Color = Color.Red;
+                        item.From = JobSchedule.TransportationItem.To;
                         item.To = item.From + TimeSpan.FromDays(days);
                         return item;
                     }

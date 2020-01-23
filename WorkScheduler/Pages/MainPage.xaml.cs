@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Syncfusion.SfSchedule.XForms;
 using WorkScheduler.Models;
+using WorkScheduler.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -19,55 +20,26 @@ namespace WorkScheduler
     public partial class MainPage : ContentPage
     {
         ScheduleAppointmentCollection AppointmentCollection;
-        public ObservableCollection<WorkScheduleItem> WorkItems { get; set; }
+        public ObservableCollection<WorkScheduleItem> WorkScheduleItems { get; set; }
         public Color SelectedColor { get; set; }
         public string SelectedText { get; set; }
+        public MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
+        public Department FilterDepartment { get; set; }
 
-        public MainPage()
+        private bool PageLoaded { get; set; }
+
+        public MainPage(Department filterDepartment = null)
         {
+            PageLoaded = false;
+
             InitializeComponent();
 
-            WorkItems = new ObservableCollection<WorkScheduleItem>();
+            FilterDepartment = filterDepartment;
+
+           // WorkScheduleItems = items;
+            
 
             AppointmentCollection = new ScheduleAppointmentCollection();
-
-            WorkScheduleItem item = new WorkScheduleItem
-            {
-                Id = Guid.NewGuid(),
-                ItemName = "Design Work Begins",
-                Color = Color.Green,
-                Description = "Design Work begins in earnest on the contracted job."
-            };
-
-            item.From = new DateTime(DateTime.Now.Year,
-
-            DateTime.Now.Month, DateTime.Now.Day + 7, 10, 0, 0);
-
-            item.To = item.From.AddHours(24);
-
-            item.FromTime = TimeSpan.FromHours(8);
-
-            item.ToTime = TimeSpan.FromHours(17);
-
-            WorkItems.Add(item);
-
-            /*ScheduleAppointment clientMeeting = new ScheduleAppointment();
-
-            clientMeeting.StartTime = new DateTime(DateTime.Now.Year,
-
-            DateTime.Now.Month, DateTime.Now.Day, 10, 0, 0);
-
-            clientMeeting.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
-
-            DateTime.Now.Day, 12, 0, 0);
-
-            clientMeeting.Color = Color.Blue;
-
-            clientMeeting.Subject = "ClientMeeting";
-
-            AppointmentCollection.Add(clientMeeting);*/
-
-            schedule.DataSource = WorkItems;
 
             schedule.AllowAppointmentDrag = true;
 
@@ -79,10 +51,15 @@ namespace WorkScheduler
 
             schedule.AppointmentDrop += Schedule_AppointmentDrop;
 
-            NonAccessibleBlock block = new NonAccessibleBlock();
-            block.StartTime = item.From.Hour;
-            block.EndTime = item.To.Hour;
-            SelectedColor = Color.Red;
+            WeekViewSettings weekViewSeetings = new WeekViewSettings();
+            weekViewSeetings.ShowAllDay = true;
+            weekViewSeetings.AllDayAppointmentLayoutColor = Color.Beige;
+            schedule.WeekViewSettings = weekViewSeetings;
+
+            //NonAccessibleBlock block = new NonAccessibleBlock();
+            //block.StartTime = item.From.Hour;
+            //block.EndTime = item.To.Hour;
+            //SelectedColor = Color.Red;
 
             displayTypePicker.Items.Add("Month View");
             displayTypePicker.Items.Add("Week View");
@@ -92,29 +69,57 @@ namespace WorkScheduler
             MessagingCenter.Subscribe<NewAppointmentPage, WorkScheduleItem>(this, "Done", (sender, arg) =>
             {
                 WorkScheduleItem workitem = arg as WorkScheduleItem;
-                var wi = this.WorkItems.SingleOrDefault(w => w.Id == workitem.Id);
+                /*var wi = this.WorkItems.SingleOrDefault(w => w.Id == workitem.Id);
                 if ( wi != null)
                     this.WorkItems.Remove(wi);
                 this.WorkItems.Add(workitem);
-                this.schedule.DataSource = WorkItems;
-                this.InvalidateMeasure();
+                this.schedule.DataSource = WorkItems;*/
+               // this.InvalidateMeasure();
             });
             //schedule.WorkWeekViewSettings.NonAccessibleBlocks.Add(block);
 
         }
 
+        protected override async void OnAppearing()
+        {
+            if (FilterDepartment != null)
+                ViewModel.FilterDepartment = FilterDepartment;
+
+            await ViewModel.GetWorkItems();
+            //WorkItems = ViewModel.WorkItems;
+            
+            base.OnAppearing();
+
+            PageLoaded = true;
+            //this.InvalidateMeasure();
+        }
+
         private void DisplayTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (displayTypePicker.SelectedItem.ToString().StartsWith("Week", StringComparison.InvariantCultureIgnoreCase))
-                schedule.ScheduleView = ScheduleView.WeekView;
-            else
-                schedule.ScheduleView = ScheduleView.MonthView;
+            if ( PageLoaded )
+            {
+                if (displayTypePicker.SelectedItem.ToString().StartsWith("Week", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ViewModel.SetEndTimesForWeekView();
+                    schedule.DataSource = ViewModel.TempDragItems;
+                    schedule.ScheduleView = ScheduleView.WeekView;
+                }
+                else
+                {
+                    ViewModel.ResetWorkItemTimesForMonthView();
+                    schedule.DataSource = ViewModel.WorkItems;
+                    schedule.ScheduleView = ScheduleView.MonthView;
+                }
+            }
+              
         }
 
         private void Schedule_AppointmentDragStarting(object sender, AppointmentDragStartingEventArgs e)
         {
-            int ix = 0;
-            ix += 1;
+            var work = e.Appointment as WorkScheduleItem;
+            
+            //cranker.
+            schedule.ResumeAppointmentUpdate();
         }
 
         private async void Schedule_CellDoubleTapped(object sender, CellTappedEventArgs e)
@@ -148,11 +153,15 @@ namespace WorkScheduler
         {
             var end = e.DropTime;
             var start = (e.Appointment as WorkScheduleItem).From;
+            WorkScheduleItem item = e.Appointment as WorkScheduleItem;
+            item.From = e.DropTime;
+            item.To = item.From.AddHours(2);
+            ViewModel.OffsetAllWorkScheduleItems(item);
 
             TimeSpan ts = end.Subtract(start);
  
             
-            foreach(WorkScheduleItem wi in WorkItems)
+           /* foreach(WorkScheduleItem wi in WorkItems)
             {
                 wi.From = wi.From.Add(ts);
                 wi.To = wi.To.Add(ts);
@@ -166,7 +175,7 @@ namespace WorkScheduler
             {
                 WorkItems.Add(wi);
             }
-            this.schedule.DataSource = WorkItems;
+            this.schedule.DataSource = WorkItems; */
 
            // if (schedule.WorkWeekViewSettings.NonAccessibleBlocks[0].StartTime == e.DropTime.Hour ||
             //    (schedule.WorkWeekViewSettings.NonAccessibleBlocks[0].StartTime - 1 == e.DropTime.Hour && e.DropTime.Minute > 0))
