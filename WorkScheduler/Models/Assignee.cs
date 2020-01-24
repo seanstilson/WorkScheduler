@@ -5,6 +5,7 @@ namespace WorkScheduler.Models
     {
         public string Name { get; set; }
         public Guid Id { get; set; }
+        public Department Department { get; set; }
 
         public Assignee()
         {
