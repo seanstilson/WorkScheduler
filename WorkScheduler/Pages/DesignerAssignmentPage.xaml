@@ -8,8 +8,9 @@
             <Label HorizontalOptions="Center" Text="{Binding WorkScheduleItem.Description}" FontSize="18" FontAttributes="Bold" x:Name="Title"/>
             <Label Text="{Binding EstBoardFt, Mode=TwoWay}" HorizontalOptions="StartAndExpand" x:Name="BoardFtLabel"/>
             <Label Text="Designer Assigned" HorizontalOptions="StartAndExpand" />
-            <Picker ItemsSource="{Binding Designers}" ItemDisplayBinding="{Binding Name}"
+            <Picker ItemsSource="{Binding Designers}" ItemDisplayBinding="{Binding CapacityString}"
                     BackgroundColor="Blue" TextColor="White" WidthRequest="200" Margin="60,0,60,0"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -30,5 +30,9 @@ namespace WorkScheduler.ViewModels
             OnPropertyChanged(Title);
             return WorkScheduleItem;
         }
+        public async Task<bool> SaveWorkItemAsync()
+        {
+           return await  _cacheService.SaveWorkScheduleAsync(WorkScheduleItem);
+        }
     }
 }

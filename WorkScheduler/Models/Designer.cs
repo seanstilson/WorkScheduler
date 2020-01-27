@@ -5,7 +5,7 @@ namespace WorkScheduler.Models
     {
         public int Capacity { get; set; }
 
-        public string CapacityString => $"{Name} - {Capacity}";
+        public string CapacityString => $"{Name} - \t{Capacity}";
 
         public Designer()
         {
