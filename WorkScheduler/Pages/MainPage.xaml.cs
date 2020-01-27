@@ -36,8 +36,8 @@ namespace WorkScheduler
 
             FilterDepartment = filterDepartment;
 
-           // WorkScheduleItems = items;
-            
+            // WorkScheduleItems = items;
+
 
             AppointmentCollection = new ScheduleAppointmentCollection();
 
@@ -74,7 +74,7 @@ namespace WorkScheduler
                     this.WorkItems.Remove(wi);
                 this.WorkItems.Add(workitem);
                 this.schedule.DataSource = WorkItems;*/
-               // this.InvalidateMeasure();
+                // this.InvalidateMeasure();
             });
             //schedule.WorkWeekViewSettings.NonAccessibleBlocks.Add(block);
 
@@ -87,7 +87,7 @@ namespace WorkScheduler
 
             await ViewModel.GetWorkItems();
             //WorkItems = ViewModel.WorkItems;
-            
+
             base.OnAppearing();
 
             PageLoaded = true;
@@ -96,7 +96,7 @@ namespace WorkScheduler
 
         private void DisplayTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ( PageLoaded )
+            if (PageLoaded)
             {
                 if (displayTypePicker.SelectedItem.ToString().StartsWith("Week", StringComparison.InvariantCultureIgnoreCase))
                 {
@@ -111,13 +111,13 @@ namespace WorkScheduler
                     schedule.ScheduleView = ScheduleView.MonthView;
                 }
             }
-              
+
         }
 
         private void Schedule_AppointmentDragStarting(object sender, AppointmentDragStartingEventArgs e)
         {
             var work = e.Appointment as WorkScheduleItem;
-            
+
             //cranker.
             schedule.ResumeAppointmentUpdate();
         }
@@ -129,7 +129,7 @@ namespace WorkScheduler
 
             int ix = 0;
             ix++;
-            
+
         }
 
         private async Task<WorkScheduleItem> EditWorkItem(CellTappedEventArgs e)
@@ -159,41 +159,35 @@ namespace WorkScheduler
             ViewModel.OffsetAllWorkScheduleItems(item);
 
             TimeSpan ts = end.Subtract(start);
- 
-            
-           /* foreach(WorkScheduleItem wi in WorkItems)
-            {
-                wi.From = wi.From.Add(ts);
-                wi.To = wi.To.Add(ts);
-            }
-                  
-            WorkScheduleItem[] items = new WorkScheduleItem[WorkItems.Count];
-            WorkItems.CopyTo(items, 0);
-            WorkItems.Clear();
-            
-            foreach(WorkScheduleItem wi in items)
-            {
-                WorkItems.Add(wi);
-            }
-            this.schedule.DataSource = WorkItems; */
 
-           // if (schedule.WorkWeekViewSettings.NonAccessibleBlocks[0].StartTime == e.DropTime.Hour ||
+
+            /* foreach(WorkScheduleItem wi in WorkItems)
+             {
+                 wi.From = wi.From.Add(ts);
+                 wi.To = wi.To.Add(ts);
+             }
+
+             WorkScheduleItem[] items = new WorkScheduleItem[WorkItems.Count];
+             WorkItems.CopyTo(items, 0);
+             WorkItems.Clear();
+
+             foreach(WorkScheduleItem wi in items)
+             {
+                 WorkItems.Add(wi);
+             }
+             this.schedule.DataSource = WorkItems; */
+
+            // if (schedule.WorkWeekViewSettings.NonAccessibleBlocks[0].StartTime == e.DropTime.Hour ||
             //    (schedule.WorkWeekViewSettings.NonAccessibleBlocks[0].StartTime - 1 == e.DropTime.Hour && e.DropTime.Minute > 0))
-                
+
 
         }
 
-        private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
+        private async void Schedule_CellTapped(object sender, CellTappedEventArgs e)
         {
-            /*Debug.WriteLine("Cell was tapped!");
-            
-            WorkScheduleItem item = new WorkScheduleItem();
-            item.Id = Guid.NewGuid();
-            item.From = e.Datetime;
-            item.To = e.Datetime.AddHours(2);
-            item.Color = SelectedColor;
-            item.ItemName = "Materials Selection";
-            WorkItems.Add(item); */
+            if (e.Appointments == null || e.Appointments.Count < 1)
+                return;
+            await ViewModel.SaveSelectedWorkItemAsync(e.Appointments.First() as WorkScheduleItem);
         }
 
         protected void Button_Click(object sender, EventArgs args)
@@ -202,6 +196,11 @@ namespace WorkScheduler
             SelectedColor = b.BackgroundColor;
             SelectedText = b.Text;
 
+        }
+
+        async void Confirm_Clicked(System.Object sender, System.EventArgs e)
+        {
+            
         }
     }
 }

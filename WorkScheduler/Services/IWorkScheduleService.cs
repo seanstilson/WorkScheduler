@@ -8,5 +8,6 @@ namespace WorkScheduler.Services
     public interface IWorkScheduleService
     {
         Task<ObservableCollection<WorkScheduleItem>> GetWorkScheduleItems();
+        //Task<bool> SaveWorkScheduleAsync(WorkScheduleItem item);
     }
 }

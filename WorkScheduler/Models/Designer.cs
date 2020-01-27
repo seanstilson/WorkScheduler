@@ -5,6 +5,8 @@ namespace WorkScheduler.Models
     {
         public int Capacity { get; set; }
 
+        public string CapacityString => $"{Name} - {Capacity}";
+
         public Designer()
         {
             Department = new Department(WorkScheduler.Constants.DesignDepartmentID)

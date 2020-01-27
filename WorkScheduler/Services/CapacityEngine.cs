@@ -48,6 +48,7 @@ namespace WorkScheduler.Services
             item.ToTime = TimeSpan.FromHours(18);
             item.ItemName = CurrentJobItem.JobName;
             item.Assignee = null;
+            item.EstimatedBoardFeet = (int)CurrentJobItem.FloorSquareFeet;
 
             switch (department)
             {

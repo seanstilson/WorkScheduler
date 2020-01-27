@@ -36,5 +36,12 @@ namespace WorkScheduler.ViewModels
                 return ServiceLocator.Current.GetInstance<MainPageViewModel>();
             }
         }
+        public DesignerAssignmentViewModel DesignerVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DesignerAssignmentViewModel>();
+            }
+        }
     }
 }

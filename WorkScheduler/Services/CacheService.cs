@@ -60,5 +60,31 @@ namespace WorkScheduler.Services
                 return workList;
             }
         }
+
+        public async Task<bool> SaveWorkScheduleAsync(WorkScheduleItem item)
+        {
+            try
+            {
+                await BlobCache.UserAccount.InsertObject("SelectedWorkSchedule", item);
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<WorkScheduleItem> GetWorkScheduleAsync()
+        {
+            try
+            {
+                var work = await BlobCache.UserAccount.GetObject<WorkScheduleItem>("SelectedWorkSchedule");
+                return work;
+            }
+            catch (System.Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

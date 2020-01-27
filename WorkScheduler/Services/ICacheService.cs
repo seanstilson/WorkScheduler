@@ -12,5 +12,9 @@ namespace WorkScheduler.Services
         Task SaveJobSchedule(JobSchedule jobSchedule);
 
         Task<ObservableCollection<WorkScheduleItem>> GetAllWorkItems();
+
+        Task<bool> SaveWorkScheduleAsync(WorkScheduleItem item);
+
+        Task<WorkScheduleItem> GetWorkScheduleAsync();
     }
 }

@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             mc:Ignorable="d" x:Class="WorkScheduler.MainPage" Title="Blenker Work Scheduler"
-             BindingContext="{Binding MainPageVM, Source={StaticResource Locator}}">
+             mc:Ignorable="d" x:Class="WorkScheduler.MainPage"
+             BindingContext="{Binding MainPageVM, Source={StaticResource Locator}}" Title="Suggested Schedule">
     <StackLayout Orientation="Vertical">
         <Grid HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
@@ -55,8 +55,11 @@
                     ColorMapping="Color"
                     StartTimeMapping="From"
                     EndTimeMapping="To"
-                    IsAllDayMapping="IsAllDay"/>
+                    IsAllDayMapping="IsAllDay"
+                    NotesMapping="Notes"/>
             </syncfusion:SfSchedule.AppointmentMapping>
         </syncfusion:SfSchedule>
+        <Button HorizontalOptions="CenterAndExpand" Text="Confirm"
+                Clicked="Confirm_Clicked" BackgroundColor="Blue" TextColor="White" FontSize="18" Margin="0,10,0,20"/>
     </StackLayout>
 </ContentPage>

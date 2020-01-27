@@ -70,12 +70,12 @@ namespace WorkScheduler.ViewModels
                          WindowsInstalled = WindowsInstalled
                      };
 
-                    await _cacheService.SaveJobItem(JobInfoItem);
-                    var schedule = await _capacityEngine.CalculateSchedules(JobInfoItem);
+                     await _cacheService.SaveJobItem(JobInfoItem);
+                     var schedule = await _capacityEngine.CalculateSchedules(JobInfoItem);
 
-                    await _cacheService.SaveJobSchedule(schedule);
-                    await SendCompletionEmail();
-                    await App.Current.MainPage.Navigation.PopModalAsync();
+                     await _cacheService.SaveJobSchedule(schedule);
+                     await SendCompletionEmail();
+                     await App.Current.MainPage.Navigation.PopModalAsync();
                  });
 
             CancelClickedCommand = new Command(
@@ -91,7 +91,7 @@ namespace WorkScheduler.ViewModels
         private async Task<bool> SendCompletionEmail()
         {
             string body = $"Sean Stilson has created a new {SelectedJobType} job for your review.";
-            return await _emailService.SendEmail("New Job Created", body, new List<string>() {"scott.jeffers@blenkerco.com"});
+            return await _emailService.SendEmail("New Job Created", body, new List<string>() { "scott.jeffers@blenkerco.com" });
         }
 
 
@@ -134,11 +134,11 @@ namespace WorkScheduler.ViewModels
 
         public DateTime WindowDeliveryDate { get; set; }
 
-        public Double WallBoardFeet { get; set; }
-        public string WallFeetString => WallBoardFeet.ToString("N2");
+        public Double WallBoardFeet => System.Convert.ToDouble(WallFeetString?.ToString());
+        public string WallFeetString {get; set;}
 
-        public Double FloorSquareFeet { get; set; }
-        public string FloorFeetString => FloorSquareFeet.ToString("N2");
+        public Double FloorSquareFeet => System.Convert.ToDouble(FloorFeetString?.ToString());
+        public string FloorFeetString {get; set;}
 
     }
 

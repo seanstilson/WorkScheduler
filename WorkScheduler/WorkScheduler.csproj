@@ -20,4 +20,10 @@
     <Folder Include="Pages\" />
     <Folder Include="Enums\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Designers.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Designers.json" />
+  </ItemGroup>
 </Project>

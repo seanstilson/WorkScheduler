@@ -19,6 +19,9 @@ namespace WorkScheduler.Models
         public Assignee Assignee { get; set; }
         public bool IsAllDay { get; set; }
         public DateTime OriginalEndDate { get; set; }
+        public int EstimatedBoardFeet { get; set; }
+        public string Notes => $"Start:{From} End: {To}, Assignee: {Assignee?.Name}";
+        public string BoardFeetString => EstimatedBoardFeet.ToString();
 
         public WorkScheduleItem()
         {

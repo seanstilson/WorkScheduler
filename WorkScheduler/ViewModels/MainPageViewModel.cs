@@ -41,7 +41,8 @@ namespace WorkScheduler.ViewModels
                     Description = wi.Description,
                     IsAllDay = wi.IsAllDay,
                     OriginalStartDate = wi.From,
-                    OriginalEndDate = wi.To
+                    OriginalEndDate = wi.To,
+                    EstimatedBoardFeet = wi.EstimatedBoardFeet
                 };
                 TempDragItems.Add(temp);
             });           
@@ -63,7 +64,8 @@ namespace WorkScheduler.ViewModels
                     FromTime = wi.FromTime,
                     ToTime = wi.ToTime,
                     Description = wi.Description,
-                    IsAllDay = wi.IsAllDay
+                    IsAllDay = wi.IsAllDay,
+                    EstimatedBoardFeet = wi.EstimatedBoardFeet
                 };
                 WorkItems.Add(temp);
             });
@@ -112,6 +114,11 @@ namespace WorkScheduler.ViewModels
                 wi.OriginalEndDate = wi.To;
             });
             OnPropertyChanged(nameof(WorkItems));
+        }
+
+        public async Task<bool> SaveSelectedWorkItemAsync(WorkScheduleItem item)
+        {
+            return await _cacheService.SaveWorkScheduleAsync(item);
         }
 
     }
