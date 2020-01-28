@@ -7,19 +7,19 @@
         <StackLayout Orientation="Vertical" Margin="0,40,0,0">
         <Grid Margin="5,5,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
@@ -74,30 +74,31 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="0" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Enter Job #" WidthRequest="100" Margin="5,5" Text="{Binding JobName, Mode=TwoWay}"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Enter Job #"
+                   WidthRequest="100" Margin="5,5" Text="{Binding JobName, Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
             <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding JobTypes}"
-                    SelectedItem="{Binding SelectedJobType, Mode=TwoWay}" Margin="5,5"/>
+                    SelectedItem="{Binding SelectedJobType, Mode=TwoWay}" Margin="5,5" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="2" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
             <Picker Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Phases}"
-                    SelectedItem="{Binding SelectedPhase, Mode=TwoWay}" Margin="5,5"/>
+                    SelectedItem="{Binding SelectedPhase, Mode=TwoWay}" Margin="5,5" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="3" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
             <Picker Grid.Row="3" Grid.Column="1" ItemsSource="{Binding BuildingSystems}"
-                    SelectedItem="{Binding SelectedBuildingSystem, Mode=TwoWay}" Margin="5,5"/>
+                    SelectedItem="{Binding SelectedBuildingSystem, Mode=TwoWay}" Margin="5,5" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="4" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <DatePicker Grid.Row="4" Grid.Column="1" Date="{Binding DeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy"/>
+            <DatePicker Grid.Row="4" Grid.Column="1" Date="{Binding DeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="5" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="5" Grid.Column="1" Placeholder="Enter miles" WidthRequest="100" Margin="5,5" Text="{Binding RountTripMilesString, Mode=TwoWay}"/>
+            <Entry Grid.Row="5" Grid.Column="1" Placeholder="Enter miles" WidthRequest="100" Margin="5,5" Text="{Binding RountTripMilesString, Mode=TwoWay}" FontSize="Small" VerticalOptions="EndAndExpand"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="6" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
@@ -109,15 +110,15 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="8" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <DatePicker Grid.Row="8" Grid.Column="1" Date="{Binding WindowDeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy"/>
+            <DatePicker Grid.Row="8" Grid.Column="1" Date="{Binding WindowDeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="9" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="9" Grid.Column="1" Placeholder="Wall brd ft" Margin="5,5" Text="{Binding WallFeetString, Mode=TwoWay}"/>
+            <Entry Grid.Row="9" Grid.Column="1" Placeholder="Wall brd ft" Margin="5,5" Text="{Binding WallFeetString, Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="10" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="10" Grid.Column="1" Placeholder="Flr sqr ft" Margin="5,5" Text="{Binding FloorFeetString,Mode=TwoWay}"/>
+            <Entry Grid.Row="10" Grid.Column="1" Placeholder="Flr sqr ft" Margin="5,5" Text="{Binding FloorFeetString,Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="Small"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="11" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
