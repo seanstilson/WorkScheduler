@@ -16,5 +16,7 @@ namespace WorkScheduler.Services
         Task<bool> SaveWorkScheduleAsync(WorkScheduleItem item);
 
         Task<WorkScheduleItem> GetWorkScheduleAsync();
+
+        Task<JobSchedule> GetJobSchedule(Guid id);
     }
 }

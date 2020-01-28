@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using WorkScheduler.Models;
 using WorkScheduler.ViewModels;
 using Xamarin.Forms;
 
@@ -25,6 +26,13 @@ namespace WorkScheduler.Pages
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
+        }
+
+       async void designerList_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            var designer = e.SelectedItem as Designer;
+            await ViewModel.SetDesigner(designer);
+            await DisplayAlert("Designer assigned", "Designer successfully assigned", "Ok");
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms.Internals;
 using System.Diagnostics;
+using System.Linq;
 
 namespace WorkScheduler.Services
 {
@@ -33,9 +34,28 @@ namespace WorkScheduler.Services
             {
                 jobList = new ObservableCollection<JobSchedule>();
             }
+            var ix = jobList.IndexOf(jobSchedule);
+            if (ix >= 0)
+                jobList[ix] = jobSchedule;
+            else
+                jobList.Add(jobSchedule);
 
-            jobList.Add(jobSchedule);
             await BlobCache.UserAccount.InsertObject("JobSchedules",jobList);
+        }
+
+        public async Task<JobSchedule> GetJobSchedule(Guid id)
+        {
+            ObservableCollection<JobSchedule> jobList;
+            try
+            {
+                jobList = await BlobCache.UserAccount.GetObject<ObservableCollection<JobSchedule>>("JobSchedules");
+                var theOne = jobList.SingleOrDefault(j => j.Id == id);
+                return theOne;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return null;
+            }
         }
 
         public async Task<ObservableCollection<WorkScheduleItem>> GetAllWorkItems()

@@ -34,5 +34,13 @@ namespace WorkScheduler.ViewModels
         {
            return await  _cacheService.SaveWorkScheduleAsync(WorkScheduleItem);
         }
+
+        public async Task SetDesigner(Designer designer)
+        {
+            WorkScheduleItem.Assignee = designer;
+            var jobSchedule = await _cacheService.GetJobSchedule(WorkScheduleItem.ParentId);
+            jobSchedule.DesignItem = WorkScheduleItem;
+            await _cacheService.SaveJobSchedule(jobSchedule);
+        }
     }
 }
