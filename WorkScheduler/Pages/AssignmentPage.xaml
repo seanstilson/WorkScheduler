@@ -1,21 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WorkScheduler.Pages.DesignerAssignmentPage"
-             BindingContext="{Binding DesignerVM, Source={StaticResource Locator}}">
+             x:Class="WorkScheduler.Pages.AssignmentPage"
+             BindingContext="{Binding AssigneeVM, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="40, 0, 0, 0" >
             <Label HorizontalOptions="Center" Text="{Binding WorkScheduleItem.Description}" FontSize="18" FontAttributes="Bold" x:Name="Title"/>
             <Label Text="{Binding EstBoardFt, Mode=TwoWay}" HorizontalOptions="StartAndExpand" x:Name="BoardFtLabel"/>
             <Label Text="Designer Assigned" HorizontalOptions="StartAndExpand" />
-            <ListView ItemsSource="{Binding Designers}" x:Name="designerList"
+            <ListView x:Name="designerList"
                       Margin="50,20,50,100" WidthRequest="250" HeightRequest="280" BackgroundColor="Silver" ItemSelected="designerList_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label FontSize="18" FontAttributes="Bold"
-                                       Text="{Binding Name}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="20,0,0,0"/>
+                                       Text="{Binding AssigneeName}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="20,0,0,0"/>
                                 <Label FontSize="15" Text="{Binding ShortCapacity}" HorizontalOptions="EndAndExpand"
                                        Margin="0, 0, 50,0" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>

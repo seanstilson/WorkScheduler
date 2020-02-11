@@ -3,17 +3,25 @@ namespace WorkScheduler.Models
 {
     public class Designer : Assignee
     {
-        public int Capacity { get; set; }
+        
+        public Designer(Assignee assignee)
+        {
+            this.AssigneeName = assignee.AssigneeName;
 
-        public string CapacityString => $"{Name} - \t{Capacity}";
+            Department = new Department(WorkScheduler.Constants.DesignDepartmentID)
+            {
+                DepartmentName = Enums.Enumerations.Department.Design.ToString()
+            };
 
-        public string ShortCapacity => $"  {Capacity}";
+            this.Capacity = assignee.Capacity;
+            this.Id = assignee.Id;
+        }
 
         public Designer()
         {
             Department = new Department(WorkScheduler.Constants.DesignDepartmentID)
             {
-                name = Enums.Enumerations.Department.Design.ToString()
+                DepartmentName = Enums.Enumerations.Department.Design.ToString()
             };
         }
     }

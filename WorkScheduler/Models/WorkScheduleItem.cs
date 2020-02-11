@@ -6,7 +6,7 @@ namespace WorkScheduler.Models
     public class WorkScheduleItem
     {
         public Guid Id { get; set; }
-        public Guid ParentId { get; set; }
+        public Guid JobScheduleId { get; set; }
         public string ItemName { get; set; }
         public string Description { get; set; }
         public DateTime From { get; set; }
@@ -20,7 +20,7 @@ namespace WorkScheduler.Models
         public bool IsAllDay { get; set; }
         public DateTime OriginalEndDate { get; set; }
         public int EstimatedBoardFeet { get; set; }
-        public string Notes => $"Start:{From} End: {To}, Assignee: {Assignee?.Name}";
+        public string Notes => $"Start:{From} End: {To}, Assignee: {Assignee?.AssigneeName}";
         public string BoardFeetString => EstimatedBoardFeet.ToString();
 
         public WorkScheduleItem()

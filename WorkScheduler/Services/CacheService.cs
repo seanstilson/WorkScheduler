@@ -71,6 +71,7 @@ namespace WorkScheduler.Services
                     workList.Add(ji.ProductionItem);
                     workList.Add(ji.TransportationItem);
                     workList.Add(ji.ReviewItem);
+                    workList.Add(ji.ProjectManagementItem);
                 });
                 return workList;
             }

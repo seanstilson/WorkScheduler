@@ -11,5 +11,10 @@ namespace WorkScheduler.Pages
         {
             InitializeComponent();
         }
+
+        void Capacity_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new AssignmentPage("ProjectManagement"));
+        }
     }
 }

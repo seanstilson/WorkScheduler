@@ -75,10 +75,10 @@ namespace WorkScheduler.ViewModels
         public void OffsetAllWorkScheduleItems(WorkScheduleItem changedItem)
         {
             TimeSpan ts = changedItem.From - changedItem.OriginalStartDate;
-            Enums.Enumerations.Department dept = (Enums.Enumerations.Department)Enum.Parse(typeof(Enums.Enumerations.Department), changedItem.Department.name);
+            Enums.Enumerations.Department dept = (Enums.Enumerations.Department)Enum.Parse(typeof(Enums.Enumerations.Department), changedItem.Department.DepartmentName);
             var siblings = TempDragItems.Where(
-                        tdi => tdi.ParentId == changedItem.ParentId &&
-                        ((Enums.Enumerations.Department)Enum.Parse(typeof(Enums.Enumerations.Department), tdi.Department.name)) > dept);
+                        tdi => tdi.JobScheduleId == changedItem.JobScheduleId &&
+                        ((Enums.Enumerations.Department)Enum.Parse(typeof(Enums.Enumerations.Department), tdi.Department.DepartmentName)) > dept);
 
             siblings?.ForEach(wi =>
            {
@@ -92,14 +92,14 @@ namespace WorkScheduler.ViewModels
             WorkItems = await _cacheService.GetAllWorkItems();
             if (FilterDepartment != null)
             {
-                var selectedItems = WorkItems.Where(wi => wi.Department.name == FilterDepartment.name).ToList();
+                var selectedItems = WorkItems.Where(wi => wi.Department.DepartmentName == FilterDepartment.DepartmentName).ToList();
                 WorkItems.Clear();
                 WorkItems = new ObservableCollection<WorkScheduleItem>(selectedItems);
             }
                 
             WorkItems.ForEach(wi =>
             {
-                switch (wi.Department.name)
+                switch (wi.Department.DepartmentName)
                 {
                     case "Design": wi.Color = Color.Green;
                         break;
@@ -107,7 +107,10 @@ namespace WorkScheduler.ViewModels
                         break;
                     case "Transportation": wi.Color = Color.Orange;
                         break;
-                    case "Final Review": wi.Color = Color.Red;
+                    case "FinalReview": wi.Color = Color.Red;
+                        break;
+                    case "ProjectManagement":
+                        wi.Color = Color.Purple;
                         break;
                 }
                 wi.OriginalStartDate = wi.From;

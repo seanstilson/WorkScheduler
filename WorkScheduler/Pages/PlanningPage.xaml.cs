@@ -14,12 +14,12 @@ namespace WorkScheduler.Pages
 
         void Calendar_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(new Models.Department(Guid.NewGuid()) { name = "Design" }));
+            Navigation.PushAsync(new MainPage(new Models.Department(Guid.NewGuid()) { DepartmentName = "Design" }));
         }
 
         void Designer_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new DesignerAssignmentPage());
+            Navigation.PushAsync(new AssignmentPage("Design"));
         }
     }
 }

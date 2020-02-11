@@ -7,16 +7,19 @@ using Xamarin.Forms;
 
 namespace WorkScheduler.Pages
 {
-    public partial class DesignerAssignmentPage : ContentPage
+    public partial class AssignmentPage : ContentPage
     {
-        public DesignerAssignmentViewModel ViewModel => BindingContext as DesignerAssignmentViewModel;
-        public DesignerAssignmentPage()
+        public AssignmentPageViewModel ViewModel => BindingContext as AssignmentPageViewModel;
+        public AssignmentPage(string department)
         {
             InitializeComponent();
+            ViewModel.DepartmentName = department;
         }
 
         protected async override void OnAppearing()
         {
+            ViewModel.GetAssigneeList();
+            designerList.ItemsSource = ViewModel.ProjectManagers;
             await ViewModel.GetSelectedWorkItem();
             Title.SetBinding(Label.TextProperty, "Title");
             BoardFtLabel.SetBinding(Label.TextProperty, "EstBoardFt");
@@ -30,8 +33,8 @@ namespace WorkScheduler.Pages
 
        async void designerList_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-            var designer = e.SelectedItem as Designer;
-            await ViewModel.SetDesigner(designer);
+            var designer = e.SelectedItem as Assignee;
+           // await ViewModel.SetDesigner(designer);
             await DisplayAlert("Designer assigned", "Designer successfully assigned", "Ok");
         }
     }

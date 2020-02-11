@@ -8,7 +8,7 @@ namespace WorkScheduler.Models
         public static List<string> Departments = new List<string> { "Project Management", "Design", "Production", "Transportation", "Final Review" };
 
         public Guid Id { get; set; }
-        public string name { get; set; }
+        public string DepartmentName { get; set; }
 
         public Department(Guid id)
         {

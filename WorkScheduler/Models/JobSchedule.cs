@@ -5,6 +5,7 @@ namespace WorkScheduler.Models
     {
         public Guid Id { get; set; }
 
+        public WorkScheduleItem ProjectManagementItem { get; set; }
         public WorkScheduleItem DesignItem { get; set; }
         public WorkScheduleItem ProductionItem { get; set; }
         public WorkScheduleItem TransportationItem { get; set;}

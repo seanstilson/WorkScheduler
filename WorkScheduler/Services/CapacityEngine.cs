@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Threading.Tasks;
 using Akavache;
+using Newtonsoft.Json;
 using WorkScheduler.Enums;
 using WorkScheduler.Models;
 
@@ -28,10 +29,14 @@ namespace WorkScheduler.Services
             Double totalReview = totalHours * 0.1;
 
             JobSchedule = new JobSchedule();
+
             JobSchedule.DesignItem = CreateScheduleItem(totalDesign, Enumerations.Department.Design);
             JobSchedule.ProductionItem = CreateScheduleItem(totalProduction, Enumerations.Department.Production);
             JobSchedule.TransportationItem = CreateScheduleItem(totalTransportation, Enumerations.Department.Transportation);
             JobSchedule.ReviewItem = CreateScheduleItem(totalReview, Enumerations.Department.FinalReview);
+            JobSchedule.ProjectManagementItem = CreateScheduleItem(totalHours, Enumerations.Department.ProjectManagement);
+
+            string crank = JsonConvert.SerializeObject(JobSchedule);
             
             return Task.FromResult(JobSchedule);
         }
@@ -41,9 +46,9 @@ namespace WorkScheduler.Services
             Double days = hours / 10;
             if (days < 1) days = 1;
 
-            WorkScheduleItem item = new WorkScheduleItem() { Id = Guid.NewGuid(), ParentId = JobSchedule.Id };
-            item.Department = new Department(Guid.NewGuid()) { name = department.ToString() };
-            item.Description = $"{CurrentJobItem.JobName} - {item.Department.name}";
+            WorkScheduleItem item = new WorkScheduleItem() { Id = Guid.NewGuid(), JobScheduleId = JobSchedule.Id };
+            item.Department = new Department(Guid.NewGuid()) { DepartmentName = department.ToString() };
+            item.Description = $"{CurrentJobItem.JobName} - {item.Department.DepartmentName}";
             item.FromTime = TimeSpan.FromHours(7);
             item.ToTime = TimeSpan.FromHours(18);
             item.ItemName = CurrentJobItem.JobName;
@@ -77,6 +82,13 @@ namespace WorkScheduler.Services
                     {
                         item.Color = Color.Red;
                         item.From = JobSchedule.TransportationItem.To;
+                        item.To = item.From + TimeSpan.FromDays(days);
+                        return item;
+                    }
+                case Enumerations.Department.ProjectManagement:
+                    {
+                        item.Color = Color.Purple;
+                        item.From = JobSchedule.DesignItem.From;
                         item.To = item.From + TimeSpan.FromDays(days);
                         return item;
                     }

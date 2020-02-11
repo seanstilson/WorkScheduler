@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WorkScheduler.Models;
 
 namespace WorkScheduler.Services
 {
-    public interface IDesignerService
+    public interface IAssigneeService
     {
-        ObservableCollection<Designer> GetDesigners();
+        IEnumerable<Assignee> GetAssignees(string department);
     }
 }

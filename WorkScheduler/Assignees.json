@@ -1,0 +1,146 @@
+﻿[
+  {
+    "AssigneeName": "Johnathon Doe",
+    "Id": "0cc35d68-21f5-4e05-bbaf-e01faae630db",
+    "Capacity": 18000,
+    "Department": {
+      "DepartmentName": "Design",
+      "Id": "19223182-6394-42cb-b9ec-78c76e287ccc"
+    }
+  },
+  {
+    "AssigneeName": "Bilbo Baggins",
+    "Id": "0cc35d68-21f5-4e05-bbaf-e01faae63a75",
+    "Capacity": 12500,
+    "Department": {
+      "DepartmentName": "Design",
+      "Id": "19223182-6394-42cb-b9ec-78c76e287ccc"
+    }
+  },
+  {
+    "AssigneeName": "King Tutoncommon",
+    "Id": "71735d68-21f5-4e05-bbaf-e01faae63a75",
+    "Capacity": 8500,
+    "Department": {
+      "DepartmentName": "Design",
+      "Id": "19223182-6394-42cb-b9ec-78c76e287ccc"
+    }
+  },
+  {
+    "AssigneeName": "Joseph Smith",
+    "Id": "abe95d68-21f5-4e05-bbaf-e01faae63a75",
+    "Capacity": 8500,
+    "Department": {
+      "DepartmentName": "Design",
+      "Id": "19223182-6394-42cb-b9ec-78c76e287ccc"
+    }
+  },
+  {
+    "AssigneeName": "Benjamin Hurr",
+    "Id": "b1a36175-05ca-46d3-aa44-47fd6056a230",
+    "Capacity": 20000,
+    "Department": {
+      "DepartmentName": "ProjectManagement",
+      "Id": "6e69e6e9-4de6-4582-b34f-1f89d546c358"
+    }
+  },
+  {
+    "AssigneeName": "Fodo Baggins",
+    "Id": "0f46f23a-b05e-4529-b5cf-f5cc209f8f26",
+    "Capacity": 12500,
+    "Department": {
+      "DepartmentName": "ProjectManagement",
+      "Id": "6e69e6e9-4de6-4582-b34f-1f89d546c358"
+    }
+  },
+  {
+    "AssigneeName": "Joseph Montana",
+    "Id": "ace28810-d61e-4489-9900-3b4e9d94683f",
+    "Capacity": 17000,
+    "Department": {
+      "DepartmentName": "ProjectManagement",
+      "Id": "6e69e6e9-4de6-4582-b34f-1f89d546c358"
+    }
+  },
+  {
+    "AssigneeName": "Hank Stram",
+    "Id": "027b05fc-3070-4fa6-80ce-b96f751d67ed",
+    "Capacity": 12000,
+    "Department": {
+      "DepartmentName": "ProjectManagement",
+      "Id": "6e69e6e9-4de6-4582-b34f-1f89d546c358"
+    }
+  },
+  {
+    "AssigneeName": "Willie Mays",
+    "Id": "b5b007b0-5409-4dfa-b756-0c2e8bfcfcf7",
+    "Capacity": 16000,
+    "Department": {
+      "DepartmentName": "Production",
+      "Id": "285153ad-eede-4f60-851e-1cc7e395dac5"
+    }
+  },
+  {
+    "AssigneeName": "Xamfir Roharim",
+    "Id": "b21891f3-deee-4b60-85f2-2f26ad6f2fd4",
+    "Capacity": 12500,
+    "Department": {
+      "DepartmentName": "Production",
+      "Id": "285153ad-eede-4f60-851e-1cc7e395dac5"
+    }
+  },
+  {
+    "AssigneeName": "Jim Brown",
+    "Id": "f9c8ddcf-5727-46da-8a6a-13d0c81d316f",
+    "Capacity": 19000,
+    "Department": {
+      "DepartmentName": "Production",
+      "Id": "285153ad-eede-4f60-851e-1cc7e395dac5"
+    }
+  },
+  {
+    "AssigneeName": "Rosie Greer",
+    "Id": "ce6d804d-1464-4a8b-92af-c36dbac881ad",
+    "Capacity": 9000,
+    "Department": {
+      "DepartmentName": "Production",
+      "Id": "285153ad-eede-4f60-851e-1cc7e395dac5"
+    }
+  },
+  {
+    "AssigneeName": "Willie Galt",
+    "Id": "b5b007b0-5409-4dfa-b756-0c2e8bfcfcf7",
+    "Capacity": 12000,
+    "Department": {
+      "DepartmentName": "Transportation",
+      "Id": "0c30cd6a-44ca-40dc-9862-7b8787782b8e"
+    }
+  },
+  {
+    "AssigneeName": "Wil Chamberlain",
+    "Id": "b21891f3-deee-4b60-85f2-2f26ad6f2fd4",
+    "Capacity": 14500,
+    "Department": {
+      "DepartmentName": "Transportation",
+      "Id": "0c30cd6a-44ca-40dc-9862-7b8787782b8e"
+    }
+  },
+  {
+    "AssigneeName": "Otis Redding",
+    "Id": "f9c8ddcf-5727-46da-8a6a-13d0c81d316f",
+    "Capacity": 18000,
+    "Department": {
+      "DepartmentName": "Transportation",
+      "Id": "0c30cd6a-44ca-40dc-9862-7b8787782b8e"
+    }
+  },
+  {
+    "AssigneeName": "Jack Lambert",
+    "Id": "ce6d804d-1464-4a8b-92af-c36dbac881ad",
+    "Capacity": 11000,
+    "Department": {
+      "DepartmentName": "Transportation",
+      "Id": "0c30cd6a-44ca-40dc-9862-7b8787782b8e"
+    }
+  }
+]
