@@ -29,6 +29,8 @@ namespace WorkScheduler.Services
             Double totalReview = totalHours * 0.1;
 
             JobSchedule = new JobSchedule();
+            JobSchedule.JobItemId = JobInfoItem.JobID;
+            JobSchedule.JobName = JobInfoItem.JobName;
 
             JobSchedule.DesignItem = CreateScheduleItem(totalDesign, Enumerations.Department.Design);
             JobSchedule.ProductionItem = CreateScheduleItem(totalProduction, Enumerations.Department.Production);

@@ -18,5 +18,11 @@ namespace WorkScheduler.Services
         Task<WorkScheduleItem> GetWorkScheduleAsync();
 
         Task<JobSchedule> GetJobSchedule(Guid id);
+
+        Task<ObservableCollection<JobSchedule>> GetJobSchedules();
+
+        Task SaveSelectedJobSchedule(JobSchedule job);
+
+        Task<JobSchedule> GetSelectedJobSchedule();
     }
 }

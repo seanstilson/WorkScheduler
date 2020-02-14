@@ -5,9 +5,9 @@
              BindingContext="{Binding AssigneeVM, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="40, 0, 0, 0" >
-            <Label HorizontalOptions="Center" Text="{Binding WorkScheduleItem.Description}" FontSize="18" FontAttributes="Bold" x:Name="Title"/>
+            <Label HorizontalOptions="Center" Text="{Binding Title}" FontSize="18" FontAttributes="Bold" x:Name="Title"/>
             <Label Text="{Binding EstBoardFt, Mode=TwoWay}" HorizontalOptions="StartAndExpand" x:Name="BoardFtLabel"/>
-            <Label Text="Designer Assigned" HorizontalOptions="StartAndExpand" />
+            <Label Text="{Binding AssigneeString}" HorizontalOptions="StartAndExpand" />
             <ListView x:Name="designerList"
                       Margin="50,20,50,100" WidthRequest="250" HeightRequest="280" BackgroundColor="Silver" ItemSelected="designerList_ItemSelected">
                 <ListView.ItemTemplate>

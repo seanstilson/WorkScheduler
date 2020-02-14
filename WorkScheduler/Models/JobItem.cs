@@ -3,6 +3,8 @@ namespace WorkScheduler.Models
 {
     public class JobItem
     {
+        public Guid JobID { get; set; }
+
         public string JobName { get; set; }
 
         public string SelectedJobType { get; set; }

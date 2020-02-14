@@ -107,5 +107,45 @@ namespace WorkScheduler.Services
                 return null;
             }
         }
+
+        public async Task<ObservableCollection<JobSchedule>>GetJobSchedules()
+        {
+            ObservableCollection<JobSchedule> jobList;
+            try
+            {
+                jobList = await BlobCache.UserAccount.GetObject<ObservableCollection<JobSchedule>>("JobSchedules");
+                return jobList;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task SaveSelectedJobSchedule(JobSchedule job)
+        {
+            try
+            {
+                await BlobCache.UserAccount.InsertObject("SelectedJobSchedule", job);
+                return;
+            }
+            catch (System.Exception ex)
+            {
+                return;
+            }
+        }
+
+        public async Task<JobSchedule> GetSelectedJobSchedule()
+        { 
+            try
+            {
+                var job = await BlobCache.UserAccount.GetObject<JobSchedule>("SelectedJobSchedule");
+                return job;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return null;
+            }
+        }
     }
 }

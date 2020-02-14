@@ -20,6 +20,7 @@ namespace WorkScheduler.Pages
         {
             ViewModel.GetAssigneeList();
             designerList.ItemsSource = ViewModel.ProjectManagers;
+            await ViewModel.GetSelectedJobSchedule();
             await ViewModel.GetSelectedWorkItem();
             Title.SetBinding(Label.TextProperty, "Title");
             BoardFtLabel.SetBinding(Label.TextProperty, "EstBoardFt");

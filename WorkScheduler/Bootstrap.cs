@@ -19,6 +19,7 @@ namespace WorkScheduler
             builder.RegisterType<JobInfoPageViewModel>().AsSelf();
             builder.RegisterType<MainPageViewModel>().AsSelf();
             builder.RegisterType<AssignmentPageViewModel>().AsSelf();
+            builder.RegisterType<ProjectManagementPageViewModel>().AsSelf();
             builder.RegisterType<CacheService>().As<ICacheService>();
             builder.RegisterType<WorkScheduleService>().As<IWorkScheduleService>();
             builder.RegisterType<EmailService>().As<IEmailService>();

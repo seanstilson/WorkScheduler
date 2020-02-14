@@ -4,6 +4,8 @@ namespace WorkScheduler.Models
     public class JobSchedule
     {
         public Guid Id { get; set; }
+        public Guid JobItemId { get; set; }
+        public string JobName { get; set; }
 
         public WorkScheduleItem ProjectManagementItem { get; set; }
         public WorkScheduleItem DesignItem { get; set; }

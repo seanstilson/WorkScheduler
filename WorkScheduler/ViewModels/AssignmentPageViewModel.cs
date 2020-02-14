@@ -14,9 +14,26 @@ namespace WorkScheduler.ViewModels
         public ObservableCollection<Designer> Designers { get; set; }
         public ObservableCollection<ProjectManager> ProjectManagers { get; set; }
         public WorkScheduleItem WorkScheduleItem { get; set; }
+        public JobSchedule JobScheduleItem { get; set; }
         public string Title { get; set; }
         public string EstBoardFt => $"Est BDFT - {WorkScheduleItem?.BoardFeetString}";
         private ICacheService _cacheService;
+        public string AssigneeString {
+            get {
+                switch (Department)
+                {
+                    case Enumerations.Department.Design:
+                        return "Designer Assigned";
+                    case Enumerations.Department.Production:
+                        return "Production Manager Assigned";
+                    case Enumerations.Department.ProjectManagement:
+                        return "Project Manager Assigned";
+                    case Enumerations.Department.Transportation:
+                        return "Transportation manager assigned";
+                    default: return "No assignmemnt";
+                }
+            }
+        }
         private string _departmentName;
         public string DepartmentName
         {
@@ -57,11 +74,21 @@ namespace WorkScheduler.ViewModels
         public async Task<WorkScheduleItem> GetSelectedWorkItem()
         {
             WorkScheduleItem = await _cacheService.GetWorkScheduleAsync();
-            Title = WorkScheduleItem.Description;
+            //Title = WorkScheduleItem.Description;
             OnPropertyChanged("WorkScheduleItem");
-            OnPropertyChanged(Title);
+            //OnPropertyChanged(Title);
             return WorkScheduleItem;
         }
+
+        public async Task<JobSchedule> GetSelectedJobSchedule()
+        {
+            JobScheduleItem = await _cacheService.GetSelectedJobSchedule();
+            Title = $"{DepartmentName} - {JobScheduleItem.JobName}";
+            OnPropertyChanged("JobSCheduleItem");
+            OnPropertyChanged(Title);
+            return JobScheduleItem;
+        }
+
         public async Task<bool> SaveWorkItemAsync()
         {
            return await  _cacheService.SaveWorkScheduleAsync(WorkScheduleItem);
