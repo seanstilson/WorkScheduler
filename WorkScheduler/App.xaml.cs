@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Akavache;
+using WorkScheduler.Services;
 
 namespace WorkScheduler
 {
@@ -12,6 +13,7 @@ namespace WorkScheduler
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTg2NzQyQDMxMzcyZTM0MmUzMFpJMVNYU0J5Yi85eU1pNnFWK0RYbFhKUEtmVm5DVW0vTUdydUF5YzI5NEU9");
             Akavache.Registrations.Start("WorkScheduler");
             InitializeComponent();
+            DependencyService.Register<ICacheService, CacheService>();
 
             MainPage = new NavigationPage(new HomePage());
         }

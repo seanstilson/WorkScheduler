@@ -50,5 +50,6 @@ namespace WorkScheduler.ViewModels
                 return ServiceLocator.Current.GetInstance<ProjectManagementPageViewModel>();
             }
         }
+
     }
 }

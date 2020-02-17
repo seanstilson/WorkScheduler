@@ -14,12 +14,11 @@ namespace WorkScheduler.ViewModels
         public ICommand CancelClickedCommand { get; set; }
 
         public JobItem JobInfoItem { get; set; }
-        private ICacheService _cacheService;
         private IEmailService _emailService;
         private ICapacityEngine _capacityEngine;
 
-        public JobInfoPageViewModel(ICacheService cacheService,
-            IEmailService emailService, ICapacityEngine capacityEngine)
+        public JobInfoPageViewModel(IEmailService emailService,
+            ICapacityEngine capacityEngine, ICacheService cacheService) : base(cacheService)
         {
             _cacheService = cacheService;
             _emailService = emailService;

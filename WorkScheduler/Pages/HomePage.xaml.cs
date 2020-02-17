@@ -24,6 +24,7 @@ namespace WorkScheduler
             base.OnAppearing();
 
             WorkItems = await _viewModel.GetWorkItemsAsync();
+            await _viewModel.GetJobSchedules();
         }
 
         public void New_Job_Clicked(object sender, EventArgs args)
@@ -33,7 +34,8 @@ namespace WorkScheduler
 
         void PMButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new ProjectManagementPage());
+            var jobs = _viewModel.JobSchedules;
+            Navigation.PushAsync(new ProjectManagementPage(jobs));
         }
 
         void Schedule_Clicked(System.Object sender, System.EventArgs e)

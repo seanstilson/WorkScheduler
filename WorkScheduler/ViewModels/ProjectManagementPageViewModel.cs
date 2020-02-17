@@ -9,21 +9,17 @@ namespace WorkScheduler.ViewModels
 {
     public class ProjectManagementPageViewModel : BasePageViewModel
     {
-        public ObservableCollection<JobSchedule> JobSchedules { get; set; }
-
+        
         public bool CapacityClicked { get; set; }
 
-        private ICacheService _cacheService;
-
-        public ProjectManagementPageViewModel(ICacheService cacheService)
+        public ProjectManagementPageViewModel(ICacheService cacheService) : base(cacheService)
         {
-            _cacheService = cacheService;
             CapacityClicked = false;
         }
 
-        public async Task GetJobSchedules()
+        public override async Task GetJobSchedules()
         {
-            JobSchedules = await _cacheService.GetJobSchedules();
+            await base.GetJobSchedules();
             CapacityClicked = true;
         }
 

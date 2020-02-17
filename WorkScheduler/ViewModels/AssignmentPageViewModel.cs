@@ -17,7 +17,6 @@ namespace WorkScheduler.ViewModels
         public JobSchedule JobScheduleItem { get; set; }
         public string Title { get; set; }
         public string EstBoardFt => $"Est BDFT - {WorkScheduleItem?.BoardFeetString}";
-        private ICacheService _cacheService;
         public string AssigneeString {
             get {
                 switch (Department)
@@ -64,11 +63,9 @@ namespace WorkScheduler.ViewModels
             }
         }
 
-        public AssignmentPageViewModel(IAssigneeService service, ICacheService cacheService)
+        public AssignmentPageViewModel(IAssigneeService service, ICacheService cacheService) : base(cacheService)
         {
             _assigneeService = service;
-            _cacheService = cacheService;
-              
         }
 
         public async Task<WorkScheduleItem> GetSelectedWorkItem()

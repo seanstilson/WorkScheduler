@@ -11,13 +11,12 @@ namespace WorkScheduler.ViewModels
 {
     public class MainPageViewModel : BasePageViewModel
     {
-        private ICacheService _cacheService;
         public ObservableCollection<WorkScheduleItem> WorkItems { get; set; }
         public ObservableCollection<WorkScheduleItem> TempDragItems { get; set; }
         public Department FilterDepartment { get; set; }
        
 
-        public MainPageViewModel(ICacheService cacheService)
+        public MainPageViewModel(ICacheService cacheService) : base(cacheService)
         {
             _cacheService = cacheService;
             TempDragItems = new ObservableCollection<WorkScheduleItem>();

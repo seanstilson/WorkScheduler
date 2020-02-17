@@ -8,11 +8,9 @@ namespace WorkScheduler.ViewModels
 {
     public class HomePageViewModel : BasePageViewModel
     {
-        ICacheService _cacheService;
 
-        public HomePageViewModel(ICacheService cacheService)
+        public HomePageViewModel(ICacheService cacheService) : base(cacheService)
         {
-            _cacheService = cacheService;
         }
 
         public async Task<ObservableCollection<WorkScheduleItem>> GetWorkItemsAsync()
