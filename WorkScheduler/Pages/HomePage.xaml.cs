@@ -45,7 +45,8 @@ namespace WorkScheduler
 
         void Design_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new PlanningPage());
+            var jobs = _viewModel.JobSchedules;
+            Navigation.PushAsync(new PlanningPage(jobs));
         }
     }
 }

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
+using WorkScheduler.Models;
 using Xamarin.Forms;
 
 namespace WorkScheduler.Pages
 {
     public partial class PlanningPage : ContentPage
     {
-        public PlanningPage()
+        public PlanningPage(ObservableCollection<JobSchedule> jobs)
         {
             InitializeComponent();
+            scheduleSelector.JobSchedules = jobs;
+            scheduleSelector.IsVisible = false;
         }
 
         void Calendar_Clicked(System.Object sender, System.EventArgs e)
@@ -19,8 +22,15 @@ namespace WorkScheduler.Pages
 
         void Designer_Clicked(System.Object sender, System.EventArgs e)
         {
+            scheduleSelector.IsVisible = true;
+            goButton.IsVisible = true;
+           // Navigation.PushAsync(new AssignmentPage("Design"));
+        }
 
+        void Go_Clicked(System.Object sender, EventArgs args)
+        {
             Navigation.PushAsync(new AssignmentPage("Design"));
         }
+
     }
 }

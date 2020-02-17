@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WorkScheduler.Pages.PlanningPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:WorkScheduler.Controls"
+             x:Class="WorkScheduler.Pages.PlanningPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Margin="100,100">
             <Button BackgroundColor="Blue" Text="Calendar"
                     TextColor="White" HeightRequest="50" WidthRequest="200" Margin="0,0,0,40" Clicked="Calendar_Clicked"/>
             <Button BackgroundColor="Blue" Text="Capacity Planning" TextColor="White" HeightRequest="50"
                     WidthRequest="200" Clicked="Designer_Clicked" />
+            <controls:ScheduleSelector x:Name="scheduleSelector" Grid.Row="4" HeightRequest="200"/>
+            <Button Text="Go" BackgroundColor="Blue"
+                    TextColor="White" Clicked="Go_Clicked" x:Name="goButton" IsVisible="false"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
