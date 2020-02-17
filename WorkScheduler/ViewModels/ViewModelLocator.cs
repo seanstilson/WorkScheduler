@@ -51,5 +51,13 @@ namespace WorkScheduler.ViewModels
             }
         }
 
+        public PlanningPageViewModel PlanningPageVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<PlanningPageViewModel>();
+            }
+        }
+
     }
 }

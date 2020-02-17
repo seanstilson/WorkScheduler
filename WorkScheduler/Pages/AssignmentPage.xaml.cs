@@ -19,7 +19,10 @@ namespace WorkScheduler.Pages
         protected async override void OnAppearing()
         {
             ViewModel.GetAssigneeList();
-            designerList.ItemsSource = ViewModel.ProjectManagers;
+            if (ViewModel.DepartmentName == "ProjectManagement")
+                designerList.ItemsSource = ViewModel.ProjectManagers;
+            else if (ViewModel.DepartmentName == "Design")
+                designerList.ItemsSource = ViewModel.Designers;
             await ViewModel.GetSelectedJobSchedule();
             await ViewModel.GetSelectedWorkItem();
             Title.SetBinding(Label.TextProperty, "Title");
