@@ -13,6 +13,7 @@ namespace WorkScheduler.ViewModels
         IAssigneeService _assigneeService;
         public ObservableCollection<Designer> Designers { get; set; }
         public ObservableCollection<ProjectManager> ProjectManagers { get; set; }
+        public ObservableCollection<Producer> Producers { get; set; }
         public WorkScheduleItem WorkScheduleItem { get; set; }
         public JobSchedule JobScheduleItem { get; set; }
         public string Title { get; set; }
@@ -58,6 +59,10 @@ namespace WorkScheduler.ViewModels
                 case Enumerations.Department.ProjectManagement:
                     ProjectManagers = new ObservableCollection<ProjectManager>();
                     assignees.ForEach(a => ProjectManagers.Add(new ProjectManager(a)));
+                    break;
+                case Enumerations.Department.Production:
+                    Producers = new ObservableCollection<Producer>();
+                    assignees.ForEach(a => Producers.Add(new Producer(a)));
                     break;
                 default: break;
             }

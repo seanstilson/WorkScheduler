@@ -46,7 +46,19 @@ namespace WorkScheduler
         void Design_Clicked(System.Object sender, System.EventArgs e)
         {
             var jobs = _viewModel.JobSchedules;
-            Navigation.PushAsync(new PlanningPage(jobs));
+            Navigation.PushAsync(new PlanningPage(jobs, "Design"));
+        }
+
+        void Production_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var jobs = _viewModel.JobSchedules;
+            Navigation.PushAsync(new PlanningPage(jobs, "Production"));
+        }
+
+        void Transportation_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var jobs = _viewModel.JobSchedules;
+            Navigation.PushAsync(new PlanningPage(jobs, "Transportation"));
         }
     }
 }

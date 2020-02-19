@@ -23,6 +23,8 @@ namespace WorkScheduler.Pages
                 designerList.ItemsSource = ViewModel.ProjectManagers;
             else if (ViewModel.DepartmentName == "Design")
                 designerList.ItemsSource = ViewModel.Designers;
+            else if (ViewModel.DepartmentName == "Production")
+                designerList.ItemsSource = ViewModel.Producers;
             await ViewModel.GetSelectedJobSchedule();
             await ViewModel.GetSelectedWorkItem();
             Title.SetBinding(Label.TextProperty, "Title");

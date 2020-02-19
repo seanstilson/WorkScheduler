@@ -34,7 +34,7 @@
                     FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40" Clicked="Design_Clicked"/>
             <Button Grid.Row="4"  Grid.ColumnSpan="3"
                     Text="Production" BackgroundColor="Blue" TextColor="White"
-                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40" Clicked="Production_Clicked"/>
             <Button Grid.Row="5"  Grid.ColumnSpan="3"
                     Text="Transportation" BackgroundColor="Blue" TextColor="White"
                     FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>

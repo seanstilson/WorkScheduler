@@ -12,7 +12,9 @@ namespace WorkScheduler.Pages
     {
         public bool Received { get; set; }
         PlanningPageViewModel ViewModel => BindingContext as PlanningPageViewModel;
-        public PlanningPage(ObservableCollection<JobSchedule> jobs)
+        Enums.Enumerations.Department SelectedDepartment { get; set; }
+
+        public PlanningPage(ObservableCollection<JobSchedule> jobs, string department = "Design")
         {
             InitializeComponent();
             scheduleSelector.JobSchedules = jobs;
@@ -22,6 +24,15 @@ namespace WorkScheduler.Pages
                 if (!Received)
                     ScheduleSelector_TappedEvent(arg, new EventArgs());
             });
+            SelectedDepartment = DetermineDepartment(department);
+        }
+
+        Enums.Enumerations.Department DetermineDepartment(string department)
+        {
+            Enums.Enumerations.Department dept;
+            bool b = Enum.TryParse<Enums.Enumerations.Department>(department, out dept);
+
+            return (b) ? dept : Enums.Enumerations.Department.Design;
         }
 
         private async void ScheduleSelector_TappedEvent(object sender, EventArgs e)
@@ -34,7 +45,7 @@ namespace WorkScheduler.Pages
 
         void Calendar_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(new Models.Department(Guid.NewGuid()) { DepartmentName = "Design" }));
+            Navigation.PushAsync(new MainPage(new Models.Department(Guid.NewGuid()) { DepartmentName = SelectedDepartment.ToString() }));
         }
 
         void Designer_Clicked(System.Object sender, System.EventArgs e)
@@ -46,7 +57,7 @@ namespace WorkScheduler.Pages
 
         void Go_Clicked(System.Object sender, EventArgs args)
         {
-            Navigation.PushAsync(new AssignmentPage("Design"));
+            Navigation.PushAsync(new AssignmentPage(SelectedDepartment.ToString()));
         }
 
     }
