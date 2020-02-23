@@ -34,9 +34,13 @@ namespace WorkScheduler.Services
             {
                 jobList = new ObservableCollection<JobSchedule>();
             }
-            var ix = jobList.IndexOf(jobSchedule);
-            if (ix >= 0)
+            var job = jobList.FirstOrDefault(js => js.Id == jobSchedule.Id);
+            if (job != null)
+            {
+                var ix = jobList.IndexOf(job);
                 jobList[ix] = jobSchedule;
+            }
+                
             else
                 jobList.Add(jobSchedule);
 

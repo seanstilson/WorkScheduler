@@ -37,7 +37,7 @@
                     FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40" Clicked="Production_Clicked"/>
             <Button Grid.Row="5"  Grid.ColumnSpan="3"
                     Text="Transportation" BackgroundColor="Blue" TextColor="White"
-                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>
+                    FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40" Clicked="Transportation_Clicked"/>
             <Button Grid.Row="6"  Grid.ColumnSpan="3"
                     Text="Set Crew" BackgroundColor="Blue" TextColor="White"
                     FontSize="18" HorizontalOptions="CenterAndExpand" WidthRequest="360" HeightRequest="40"/>

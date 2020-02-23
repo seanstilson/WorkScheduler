@@ -12,6 +12,8 @@ namespace WorkScheduler.ViewModels
         
         public bool CapacityClicked { get; set; }
 
+        public JobSchedule SelectedSchedule { get; set; }
+
         public ProjectManagementPageViewModel(ICacheService cacheService) : base(cacheService)
         {
             CapacityClicked = false;
@@ -23,11 +25,17 @@ namespace WorkScheduler.ViewModels
             CapacityClicked = true;
         }
 
-        public async Task SaveSelectedSchedule(string name)
+        public async Task SetSelectedSchedule (string name)
         {
-            var theOne = JobSchedules.SingleOrDefault(js => js.JobName == name);
-            if (theOne != null)
-               await _cacheService.SaveSelectedJobSchedule(theOne);
+            await GetJobSchedules();
+            SelectedSchedule = JobSchedules.FirstOrDefault(js => js.JobName == name);
+        }
+
+        public async Task SaveSelectedSchedule(string name = null)
+        {
+           // var theOne = JobSchedules.SingleOrDefault(js => js.JobName == name);
+            if (SelectedSchedule != null)
+               await _cacheService.SaveSelectedJobSchedule(SelectedSchedule);
         }
     }
 }

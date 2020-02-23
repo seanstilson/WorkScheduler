@@ -12,7 +12,7 @@
                     WidthRequest="200" Clicked="Designer_Clicked" />
             <controls:ScheduleSelector x:Name="scheduleSelector" Grid.Row="4" HeightRequest="200"/>
             <Button Text="Go" BackgroundColor="Blue"
-                    TextColor="White" Clicked="Go_Clicked" x:Name="goButton" IsVisible="false"/>
+                    TextColor="White" Clicked="Go_Clicked" x:Name="goButton" IsVisible="false" VerticalOptions="EndAndExpand" Margin="0,0,0,20"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

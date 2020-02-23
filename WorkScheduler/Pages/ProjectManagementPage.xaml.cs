@@ -24,8 +24,10 @@ namespace WorkScheduler.Pages
             
             MessagingCenter.Subscribe<ScheduleSelector, Label>(this, "Tapped", (sender, arg) =>
             {
+                Received = !Received;
                 if ( !Received )
                     ScheduleSelector_TappedEvent(arg, new EventArgs());
+                
             });
 
             scheduleSelector.IsVisible = false;
@@ -40,8 +42,8 @@ namespace WorkScheduler.Pages
         {
             goButton.IsVisible = true;
             Label label = sender as Label;
-            await ViewModel.SaveSelectedSchedule(label.Text);
-            Received = true;
+            await ViewModel.SetSelectedSchedule(label.Text);
+          //  Received = true;
         }
 
         protected override void OnAppearing()
@@ -94,7 +96,7 @@ namespace WorkScheduler.Pages
             goButton.IsVisible = false; */
             scheduleSelector.IsVisible = false;
             goButton.IsVisible = false;
-
+            await ViewModel.SaveSelectedSchedule();
             await Navigation.PushAsync(new AssignmentPage("ProjectManagement"));
         }
     }
