@@ -29,13 +29,14 @@ namespace WorkScheduler
 
         public void New_Job_Clicked(object sender, EventArgs args)
         {
-            Navigation.PushModalAsync(new JobInfoPage());
+            Navigation.PushModalAsync(new NewJobPage());
         }
 
         void PMButton_Clicked(System.Object sender, System.EventArgs e)
         {
             var jobs = _viewModel.JobSchedules;
-            Navigation.PushAsync(new ProjectManagementPage(jobs));
+            Navigation.PushAsync(new PhaseCreationPage());
+            //Navigation.PushAsync(new ProjectManagementPage(jobs));
         }
 
         void Schedule_Clicked(System.Object sender, System.EventArgs e)

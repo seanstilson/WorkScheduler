@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding PhaseCreateVM, Source={StaticResource Locator}}"
+             x:Class="WorkScheduler.Pages.PhaseCreationPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="Subtitle" Text="Phases"/>
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="EndAndExpand" Text="Add Phase" VerticalOptions="CenterAndExpand"/>
+                <Button Text="+" HorizontalOptions="StartAndExpand" FontSize="22" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <ListView x:Name="listCrank" ItemsSource="{Binding Phases}" Margin="50,0,50,0" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding PhaseName}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                                <StackLayout Orientation="Horizontal">
+                                <ListView ItemsSource="{Binding BuildingSystems}" HasUnevenRows="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding FullName}" FontAttributes="Bold" VerticalOptions="Start"/>
+                                                    <Label Text="Capacity:" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                                    <Entry Placeholder="BoardFeet" Text="{Binding EstimatedBoardFeet}"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <Button VerticalOptions="StartAndExpand" Text="Add System +"
+                                        Clicked="System_Add_Clicked" AutomationId="{Binding PhaseName}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

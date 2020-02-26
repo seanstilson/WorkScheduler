@@ -58,6 +58,13 @@ namespace WorkScheduler.ViewModels
                 return ServiceLocator.Current.GetInstance<PlanningPageViewModel>();
             }
         }
+        public PhaseCreationPageViewModel PhaseCreateVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<PhaseCreationPageViewModel>();
+            }
+        }
 
     }
 }
