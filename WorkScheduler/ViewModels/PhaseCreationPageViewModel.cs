@@ -12,6 +12,8 @@ namespace WorkScheduler.ViewModels
     {
         public ObservableCollection<Phase> Phases { get; set; }
 
+        public List<string> Systems { get; set; }
+
         public PhaseCreationPageViewModel(ICacheService cacheService) : base(cacheService)
         {
             Phases = new ObservableCollection<Phase>()
@@ -38,6 +40,18 @@ namespace WorkScheduler.ViewModels
                         }
                     }
                 }
+            };
+            Systems = new List<string>()
+            {
+                "Walls 1",
+                "Walls 2",
+                "Walls 3",
+                "Floors 1",
+                "Floors 2",
+                "Floors 3",
+                "Roof Truss 1",
+                "Roof Truss 2",
+                "Basement 1"
             };
         }
 

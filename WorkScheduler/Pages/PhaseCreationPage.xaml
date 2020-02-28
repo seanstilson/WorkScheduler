@@ -22,9 +22,22 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding FullName}" FontAttributes="Bold" VerticalOptions="Start"/>
+                                                    <Picker ItemsSource="{Binding Systems}" FontAttributes="Bold"
+                                                            VerticalOptions="Start" SelectedItem="{Binding FullName, Mode=TwoWay}">
+                                                        <Picker.Items>
+                                                            <x:String>Walls 1</x:String> 
+                                                            <x:String>Walls 2</x:String>
+                                                            <x:String>Walls 3</x:String> 
+                                                            <x:String>Floors 1</x:String>
+                                                            <x:String>Floors 2</x:String> 
+                                                            <x:String>Floors 3</x:String>
+                                                            <x:String>Roof Truss 1</x:String> 
+                                                            <x:String>Roof Truss 2</x:String>
+                                                            <x:String>Basement 1</x:String>
+                                                        </Picker.Items>
+                                                    </Picker>
                                                     <Label Text="Capacity:" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                                                    <Entry Placeholder="BoardFeet" Text="{Binding EstimatedBoardFeet}"/>
+                                                    <Entry Placeholder="BoardFeet" Text="{Binding EstimatedBoardFeet, Mode=TwoWay}"/>
                                                 </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
