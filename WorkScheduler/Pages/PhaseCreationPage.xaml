@@ -7,8 +7,8 @@
         <StackLayout Orientation="Vertical">
             <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="Subtitle" Text="Phases"/>
             <StackLayout Orientation="Horizontal">
-                <Label HorizontalOptions="EndAndExpand" Text="Add Phase" VerticalOptions="CenterAndExpand"/>
-                <Button Text="+" HorizontalOptions="StartAndExpand" FontSize="22" VerticalOptions="CenterAndExpand"/>
+                <Label HorizontalOptions="EndAndExpand" Text="Add Phase" VerticalOptions="CenterAndExpand" FontSize="22"/>
+                <Button Text="+" HorizontalOptions="StartAndExpand" FontSize="24" VerticalOptions="CenterAndExpand" Clicked="New_Phase_Clicked"/>
             </StackLayout>
             <ListView x:Name="listCrank" ItemsSource="{Binding Phases}" Margin="50,0,50,0" HasUnevenRows="True">
                 <ListView.ItemTemplate>
@@ -17,7 +17,7 @@
                             <StackLayout Orientation="Vertical">
                                 <Label Text="{Binding PhaseName}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
                                 <StackLayout Orientation="Horizontal">
-                                <ListView ItemsSource="{Binding BuildingSystems}" HasUnevenRows="True">
+                                <ListView ItemsSource="{Binding BuildingSystems}" HasUnevenRows="True" HeightRequest="200">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>

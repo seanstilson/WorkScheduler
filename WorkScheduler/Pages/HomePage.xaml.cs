@@ -35,7 +35,7 @@ namespace WorkScheduler
         void PMButton_Clicked(System.Object sender, System.EventArgs e)
         {
             var jobs = _viewModel.JobSchedules;
-            Navigation.PushAsync(new PhaseCreationPage());
+            Navigation.PushAsync(new PhaseCreationPage(new JobItem()));
             //Navigation.PushAsync(new ProjectManagementPage(jobs));
         }
 

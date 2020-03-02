@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+
 namespace WorkScheduler.Models
 {
     public class JobItem
@@ -7,10 +9,12 @@ namespace WorkScheduler.Models
 
         public string JobName { get; set; }
 
-        public string SelectedJobType { get; set; }
-        public string SelectedPhase { get; set; }
+        public ObservableCollection<Phase> Phases { get; set; }
 
-        public string SelectedBuildingSystem { get; set; }
+        public string SelectedJobType { get; set; }
+        //public string SelectedPhase { get; set; }
+
+        //public string SelectedBuildingSystem { get; set; }
 
         public DateTime DeliveryDate { get; set; }
 

@@ -75,5 +75,33 @@ namespace WorkScheduler.ViewModels
             Phases = new ObservableCollection<Phase>(lister);
             OnPropertyChanged(nameof(Phases));
         }
+
+        public void AddNewPhase()
+        {
+            int ix = Phases.Count + 1;
+            var phase = new Phase
+            {
+                Index = ix,
+                JobId = Phases.First().JobId,
+            };
+
+            if (phase != null)
+            {
+                BuildingSystem bs = new BuildingSystem
+                {
+                    FullName = "TBD",
+                    ActualBoardFeet = 0,
+                    Code = "TBD",
+                    EstimatedBoardFeet = 0
+                };
+                phase.BuildingSystems = new List<BuildingSystem>() { bs };
+            }
+            var lister = new List<Phase>();
+            Phases.ForEach(p => lister.Add(p));
+            lister.Add(phase);
+            Phases.Clear();
+            Phases = new ObservableCollection<Phase>(lister);
+            OnPropertyChanged(nameof(Phases));
+        }
     }
 }

@@ -31,14 +31,7 @@ namespace WorkScheduler.ViewModels
                 "LA"
             };
 
-            Phases = new List<string>()
-            {
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-            };
+            Phases = new List<string>();
 
             BuildingSystems = new List<string>()
             {
@@ -61,9 +54,9 @@ namespace WorkScheduler.ViewModels
                          FloorSquareFeet = FloorSquareFeet,
                          HasWindows = HasWindows,
                          RoundTripMiles = RoundTripMiles,
-                         SelectedBuildingSystem = SelectedBuildingSystem,
+                         //SelectedBuildingSystem = SelectedBuildingSystem,
                          SelectedJobType = SelectedJobType,
-                         SelectedPhase = SelectedPhase,
+                         //SelectedPhase = SelectedPhase,
                          WallBoardFeet = WallBoardFeet,
                          WindowDeliveryDate = WindowDeliveryDate,
                          WindowsInstalled = WindowsInstalled
@@ -102,9 +95,9 @@ namespace WorkScheduler.ViewModels
                 FloorSquareFeet = FloorSquareFeet,
                 HasWindows = HasWindows,
                 RoundTripMiles = RoundTripMiles,
-                SelectedBuildingSystem = SelectedBuildingSystem,
+                //SelectedBuildingSystem = SelectedBuildingSystem,
                 SelectedJobType = SelectedJobType,
-                SelectedPhase = SelectedPhase,
+                //SelectedPhase = SelectedPhase,
                 WallBoardFeet = WallBoardFeet,
                 WindowDeliveryDate = WindowDeliveryDate,
                 WindowsInstalled = WindowsInstalled
