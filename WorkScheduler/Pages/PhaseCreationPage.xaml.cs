@@ -15,6 +15,7 @@ namespace WorkScheduler.Pages
         {
             JobItem = jobItem;
             InitializeComponent();
+            ViewModel.Phases = jobItem?.Phases;
         }
 
         void System_Add_Clicked(System.Object sender, System.EventArgs e)
@@ -26,6 +27,20 @@ namespace WorkScheduler.Pages
         void New_Phase_Clicked(System.Object sender, System.EventArgs e)
         {
             ViewModel.AddNewPhase();
+        }
+
+        async void Button_Cancel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        async void Button_OK_Clicked(System.Object sender, System.EventArgs e)
+        {
+            if (JobItem == null)
+                JobItem = new JobItem();
+            JobItem.Phases = ViewModel.Phases;
+            await ViewModel.SaveJobItem(JobItem);
+            await Navigation.PopModalAsync();
         }
     }
 }

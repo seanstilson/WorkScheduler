@@ -51,6 +51,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Clicked="Button_Cancel_Clicked"
+                        HorizontalOptions="CenterAndExpand" BackgroundColor="Blue" TextColor="White"/>
+                <Button Text="OK" Clicked="Button_OK_Clicked" HorizontalOptions="CenterAndExpand" BackgroundColor="Blue" TextColor="White"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

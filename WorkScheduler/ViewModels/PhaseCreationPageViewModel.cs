@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using WorkScheduler.Models;
 using WorkScheduler.Services;
 using Xamarin.Forms.Internals;
@@ -10,37 +12,21 @@ namespace WorkScheduler.ViewModels
 {
     public class PhaseCreationPageViewModel : BasePageViewModel
     {
-        public ObservableCollection<Phase> Phases { get; set; }
+        private ObservableCollection<Phase> _phases;
+
+        public ObservableCollection<Phase> Phases {
+            get { return _phases; }
+            set
+            {
+                _phases = value ?? new ObservableCollection<Phase>() { BuildSinglePhase() };
+                OnPropertyChanged(nameof(Phases));
+            }
+        }
 
         public List<string> Systems { get; set; }
 
         public PhaseCreationPageViewModel(ICacheService cacheService) : base(cacheService)
         {
-            Phases = new ObservableCollection<Phase>()
-            {
-                new Phase
-                {
-                    Index = 1,
-                    JobId = Guid.NewGuid(),
-                    BuildingSystems = new System.Collections.Generic.List<BuildingSystem>()
-                    {
-                        new BuildingSystem
-                        {
-                            ActualBoardFeet = 2800,
-                            Code = "W1",
-                            EstimatedBoardFeet = 2600,
-                            FullName = "Walls 1"
-                        },
-                        new BuildingSystem
-                        {
-                            ActualBoardFeet = 3400,
-                            Code = "W2",
-                            EstimatedBoardFeet = 3800,
-                            FullName = "Walls 2"
-                        }
-                    }
-                }
-            };
             Systems = new List<string>()
             {
                 "Walls 1",
@@ -102,6 +88,39 @@ namespace WorkScheduler.ViewModels
             Phases.Clear();
             Phases = new ObservableCollection<Phase>(lister);
             OnPropertyChanged(nameof(Phases));
+        }
+
+        private Phase BuildSinglePhase()
+        {
+            return new Phase
+                {
+                Index = 1,
+                JobId = Guid.NewGuid(),
+                BuildingSystems = new System.Collections.Generic.List<BuildingSystem>()
+                {
+                    new BuildingSystem
+                    {
+                        ActualBoardFeet = 2800,
+                        Code = "W1",
+                        EstimatedBoardFeet = 2600,
+                        FullName = "Walls 1"
+                    }
+                }
+            };
+        }
+
+        public async Task<bool> SaveJobItem(JobItem jobItem )
+        {
+            try
+            {
+                await _cacheService.SaveJobItem(jobItem);
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex.StackTrace);
+                return false;
+            }
         }
     }
 }
