@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using WorkScheduler.Models;
 using WorkScheduler.Pages;
 using WorkScheduler.ViewModels;
@@ -22,6 +25,8 @@ namespace WorkScheduler
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            var forecasts = await GetWeatherForecast();
 
             WorkItems = await _viewModel.GetWorkItemsAsync();
             await _viewModel.GetJobSchedules();
@@ -60,6 +65,22 @@ namespace WorkScheduler
         {
             var jobs = _viewModel.JobSchedules;
             Navigation.PushAsync(new PlanningPage(jobs, "Transportation"));
+        }
+
+        async Task<List<WeatherForecast>> GetWeatherForecast()
+        {
+            string url = "http://63bc8d5a.ngrok.io/weatherforecast";
+            var client = new HttpClient();
+
+            HttpResponseMessage response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var forecasts = await response.Content.ReadAsStringAsync();
+                List<WeatherForecast> weatherForecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(forecasts);
+                return weatherForecasts;
+            }
+            return null;
+
         }
     }
 }

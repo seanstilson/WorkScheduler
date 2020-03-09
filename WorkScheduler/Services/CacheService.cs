@@ -22,6 +22,12 @@ namespace WorkScheduler.Services
             await BlobCache.UserAccount.InsertObject("NewJobItem", item);
         }
 
+        public async Task<JobItem> GetJobItem()
+        {
+            JobItem ji = await BlobCache.UserAccount.GetObject<JobItem>("NewJobItem");
+            return ji;
+        }
+
         public async Task SaveJobSchedule(JobSchedule jobSchedule)
         {
             ObservableCollection<JobSchedule> jobList;

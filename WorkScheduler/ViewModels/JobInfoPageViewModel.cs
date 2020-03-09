@@ -5,6 +5,9 @@ using WorkScheduler.Models;
 using Xamarin.Forms;
 using WorkScheduler.Services;
 using System.Threading.Tasks;
+using WorkScheduler.Pages;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace WorkScheduler.ViewModels
 {
@@ -16,6 +19,7 @@ namespace WorkScheduler.ViewModels
         public JobItem JobInfoItem { get; set; }
         private IEmailService _emailService;
         private ICapacityEngine _capacityEngine;
+        public List<BuildingSystem> BuildingSystems { get; set; }
 
         public JobInfoPageViewModel(IEmailService emailService,
             ICapacityEngine capacityEngine, ICacheService cacheService) : base(cacheService)
@@ -31,12 +35,19 @@ namespace WorkScheduler.ViewModels
                 "LA"
             };
 
-            Phases = new List<string>();
+            Phases = new ObservableCollection<Phase>();
 
-            BuildingSystems = new List<string>()
+            BuildingSystems = new List<BuildingSystem>();
+
+            MessagingCenter.Subscribe<PhaseCreationPage>(this, "Phases Saved", (sender) =>
             {
-                "F1", "F2","F3","F4","F5","W1","W2","W3","W4","W5","RT"
-            };
+                var creator = sender as PhaseCreationPage;
+                Phases = creator.JobItem.Phases;
+                OnPropertyChanged(nameof(Phases));
+                if (Phases != null)
+                    BuildingSystems = Phases.First().BuildingSystems;
+                OnPropertyChanged(nameof(BuildingSystems));
+            });
 
             DeliveryDate = DateTime.Today;
             RoundTripMiles = 0;
@@ -54,6 +65,7 @@ namespace WorkScheduler.ViewModels
                          FloorSquareFeet = FloorSquareFeet,
                          HasWindows = HasWindows,
                          RoundTripMiles = RoundTripMiles,
+                         Phases = Phases,
                          //SelectedBuildingSystem = SelectedBuildingSystem,
                          SelectedJobType = SelectedJobType,
                          //SelectedPhase = SelectedPhase,
@@ -110,10 +122,9 @@ namespace WorkScheduler.ViewModels
         public List<String> JobTypes { get; set; }
         public string SelectedJobType { get; set; }
 
-        public List<string> Phases { get; set; }
+        public ObservableCollection<Phase> Phases { get; set; }
         public string SelectedPhase { get; set; }
 
-        public List<string> BuildingSystems { get; set; }
         public string SelectedBuildingSystem { get; set; }
 
         public DateTime DeliveryDate { get; set; }

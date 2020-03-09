@@ -40,6 +40,7 @@ namespace WorkScheduler.Pages
                 JobItem = new JobItem();
             JobItem.Phases = ViewModel.Phases;
             await ViewModel.SaveJobItem(JobItem);
+            MessagingCenter.Send<PhaseCreationPage>(this, "Phases Saved");
             await Navigation.PopModalAsync();
         }
     }

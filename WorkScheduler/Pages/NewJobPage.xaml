@@ -74,12 +74,12 @@
                    BackgroundColor="Transparent">
             </Frame>
             <Entry Grid.Row="0" Grid.Column="1" Placeholder="Enter Job #"
-                   WidthRequest="100" Margin="5,5" Text="{Binding JobName, Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="Small"/>
+                   WidthRequest="100" Margin="5,5" Text="{Binding JobName, Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="12"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
             <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding JobTypes}"
-                    SelectedItem="{Binding SelectedJobType, Mode=TwoWay}" Margin="5,5" VerticalOptions="EndAndExpand" FontSize="Small"/>
+                    SelectedItem="{Binding SelectedJobType, Mode=TwoWay}" Margin="5,5" VerticalOptions="EndAndExpand" FontSize="12"/>
             <!--Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="2" Grid.Column="1"
                    BackgroundColor="Transparent">
             !-->
@@ -90,7 +90,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Label Text="{Binding PhaseName}" FontSize="Small"/>
+                                <Label Text="{Binding PhaseName}" FontSize="12"/>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -101,11 +101,11 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="3" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding DeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy" VerticalOptions="EndAndExpand" FontSize="Small"/>
+            <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding DeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy" VerticalOptions="EndAndExpand" FontSize="12"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="4" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="4" Grid.Column="1" Placeholder="Enter miles" WidthRequest="100" Margin="5,5" Text="{Binding RountTripMilesString, Mode=TwoWay}" FontSize="Small" VerticalOptions="EndAndExpand"/>
+            <Entry Grid.Row="4" Grid.Column="1" Placeholder="Enter miles" WidthRequest="100" Margin="5,5" Text="{Binding RountTripMilesString, Mode=TwoWay}" FontSize="12" VerticalOptions="EndAndExpand"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="6" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
@@ -117,15 +117,15 @@
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="7" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <DatePicker Grid.Row="7" Grid.Column="1" Date="{Binding WindowDeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy" VerticalOptions="EndAndExpand" FontSize="Small"/>
+            <DatePicker Grid.Row="7" Grid.Column="1" Date="{Binding WindowDeliveryDate, Mode=TwoWay}" Margin="5,5" Format="MM/dd/yyyy" VerticalOptions="EndAndExpand" FontSize="21"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="8" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="8" Grid.Column="1" Placeholder="Wall brd ft" Margin="5,5" Text="{Binding WallFeetString, Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="Small"/>
+            <Entry Grid.Row="8" Grid.Column="1" Placeholder="Wall brd ft" Margin="5,5" Text="{Binding WallFeetString, Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="12"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="9" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
-            <Entry Grid.Row="9" Grid.Column="1" Placeholder="Flr sqr ft" Margin="5,5" Text="{Binding FloorFeetString,Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="Small"/>
+            <Entry Grid.Row="9" Grid.Column="1" Placeholder="Flr sqr ft" Margin="5,5" Text="{Binding FloorFeetString,Mode=TwoWay}" VerticalOptions="EndAndExpand" FontSize="12"/>
             <Frame BorderColor="Black" CornerRadius="2" HasShadow="False" Grid.Row="10" Grid.Column="1"
                    BackgroundColor="Transparent">
             </Frame>
@@ -143,7 +143,19 @@
             <Frame BorderColor="Gray" CornerRadius="2" HasShadow="False" Grid.Row="1" Grid.Column="2"
                    BackgroundColor="Transparent" Margin="0,0,5,0">
             </Frame>
-            
+            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
+            <ListView  ItemsSource="{Binding BuildingSystems}" WidthRequest="90"
+                     Margin="5,5" VerticalOptions="EndAndExpand" HeightRequest="80">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding FullName}" FontSize="12"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Edit" HorizontalOptions="EndAndExpand" Clicked="New_Phase_Clicked" IsEnabled="True"/>
+            </StackLayout>
             
             
             <Frame BorderColor="Gray" CornerRadius="2" HasShadow="False" Grid.Row="3" Grid.Column="2"

@@ -53,8 +53,9 @@
             </ListView>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Clicked="Button_Cancel_Clicked"
-                        HorizontalOptions="CenterAndExpand" BackgroundColor="Blue" TextColor="White"/>
-                <Button Text="OK" Clicked="Button_OK_Clicked" HorizontalOptions="CenterAndExpand" BackgroundColor="Blue" TextColor="White"/>
+                        HorizontalOptions="CenterAndExpand" BackgroundColor="Blue" TextColor="White" WidthRequest="100"/>
+                <Button Text="OK" Clicked="Button_OK_Clicked" HorizontalOptions="CenterAndExpand"
+                        BackgroundColor="Blue" TextColor="White" WidthRequest="80"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
