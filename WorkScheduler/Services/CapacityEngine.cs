@@ -32,7 +32,7 @@ namespace WorkScheduler.Services
             JobSchedule.JobItemId = JobInfoItem.JobID;
             JobSchedule.JobName = JobInfoItem.JobName;
 
-            JobSchedule.DesignItem = CreateScheduleItem(totalDesign, Enumerations.Department.Design);
+            JobSchedule.DesignItem = this.CreateScheduleItem(totalDesign, Enumerations.Department.Design);
             JobSchedule.ProductionItem = CreateScheduleItem(totalProduction, Enumerations.Department.Production);
             JobSchedule.TransportationItem = CreateScheduleItem(totalTransportation, Enumerations.Department.Transportation);
             JobSchedule.ReviewItem = CreateScheduleItem(totalReview, Enumerations.Department.FinalReview);
@@ -43,7 +43,7 @@ namespace WorkScheduler.Services
             return Task.FromResult(JobSchedule);
         }
 
-        private WorkScheduleItem CreateScheduleItem(Double hours, Enumerations.Department department)
+        public WorkScheduleItem CreateScheduleItem(Double hours, Enumerations.Department department)
         {
             Double days = hours / 10;
             if (days < 1) days = 1;
