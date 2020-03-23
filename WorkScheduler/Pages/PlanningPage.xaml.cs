@@ -52,7 +52,7 @@ namespace WorkScheduler.Pages
         {
             scheduleSelector.IsVisible = true;
             goButton.IsVisible = true;
-           // Navigation.PushAsync(new AssignmentPage("Design"));
+            Navigation.PushAsync(new CapacityPlanningPage());
         }
 
         void Go_Clicked(System.Object sender, EventArgs args)

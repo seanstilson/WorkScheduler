@@ -5,7 +5,7 @@
              x:Class="WorkScheduler.Pages.PhaseCreationPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="Subtitle" Text="Phases"/>
+            <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="20" Text="Phases"/>
             <StackLayout Orientation="Horizontal">
                 <Label HorizontalOptions="EndAndExpand" Text="Add Phase" VerticalOptions="CenterAndExpand" FontSize="22"/>
                 <Button Text="+" HorizontalOptions="StartAndExpand" FontSize="24" VerticalOptions="CenterAndExpand" Clicked="New_Phase_Clicked"/>
@@ -15,15 +15,25 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding PhaseName}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding PhaseName}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
                                 <StackLayout Orientation="Horizontal">
                                 <ListView ItemsSource="{Binding BuildingSystems}" HasUnevenRows="True" HeightRequest="200">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Orientation="Horizontal">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80"/>
+                                                        <ColumnDefinition Width="140"/>
+                                                        <ColumnDefinition Width="120"/>
+                                                        <ColumnDefinition Width="120"/>
+                                                        <ColumnDefinition Width="120"/>
+                                                    </Grid.ColumnDefinitions>
                                                     <Picker ItemsSource="{Binding Systems}" FontAttributes="Bold"
-                                                            VerticalOptions="Start" SelectedItem="{Binding FullName, Mode=TwoWay}">
+                                                            VerticalOptions="Start" SelectedItem="{Binding FullName, Mode=TwoWay}" Grid.Column="0">
                                                         <Picker.Items>
                                                             <x:String>Walls 1</x:String> 
                                                             <x:String>Walls 2</x:String>
@@ -36,9 +46,11 @@
                                                             <x:String>Basement 1</x:String>
                                                         </Picker.Items>
                                                     </Picker>
-                                                    <Label Text="Capacity:" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                                                    <Entry Placeholder="BoardFeet" Text="{Binding EstimatedBoardFeet, Mode=TwoWay}"/>
-                                                </StackLayout>
+                                                    <Label HorizontalOptions="EndAndExpand" Text="Delivery Date:" Grid.Column="1" VerticalOptions="Center"/>
+                                                    <DatePicker x:Name="DateMe" HorizontalOptions="EndAndExpand" Date="{Binding DeliveryDate}" Grid.Column="2"/>
+                                                    <Label Text="Capacity:" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Grid.Column="3"/>
+                                                    <Entry Placeholder="BoardFeet" Text="{Binding EstimatedBoardFeet, Mode=TwoWay}" Grid.Column="4"/>
+                                                </Grid>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>

@@ -8,6 +8,10 @@ namespace WorkScheduler.Models
         public int EstimatedBoardFeet { get; set; }
         public int ActualBoardFeet { get; set; }
 
+        public DateTime? DeliveryDate { get; set; }
+
+        public string DeliveryDateString => DeliveryDate?.ToShortDateString();
+
         public BuildingSystem()
         {
         }

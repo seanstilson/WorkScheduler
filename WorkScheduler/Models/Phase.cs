@@ -12,6 +12,8 @@ namespace WorkScheduler.Models
 
         public List<BuildingSystem> BuildingSystems { get; set; }
 
+        public int LoadCount { get; set; } //The numbner of trailers needed for this phase
+
         public Phase()
         {
         }

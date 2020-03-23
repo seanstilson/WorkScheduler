@@ -26,7 +26,7 @@ namespace WorkScheduler
         {
             base.OnAppearing();
 
-            var forecasts = await GetWeatherForecast();
+            //var forecasts = await GetWeatherForecast();
 
             WorkItems = await _viewModel.GetWorkItemsAsync();
             await _viewModel.GetJobSchedules();

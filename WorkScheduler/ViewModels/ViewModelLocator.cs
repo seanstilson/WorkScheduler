@@ -65,6 +65,13 @@ namespace WorkScheduler.ViewModels
                 return ServiceLocator.Current.GetInstance<PhaseCreationPageViewModel>();
             }
         }
+        public CapacityPlanningPageViewModel CapacityVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CapacityPlanningPageViewModel>();
+            }
+        }
 
     }
 }

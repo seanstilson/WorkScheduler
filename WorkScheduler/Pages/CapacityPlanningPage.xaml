@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkScheduler.Pages.CapacityPlanningPage"
+             BindingContext="{Binding CapacityVM, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="240"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="Production" FontAttributes="Bold" FontSize="Large"/>
+            <Frame BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="2">
+                
+            </Frame>
+            <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="Work Bucket"
+                   FontAttributes="Bold" BackgroundColor="Silver" FontSize="Medium"/>
+            <Frame BackgroundColor="Beige" Grid.Row="2" Grid.ColumnSpan="2" HasShadow="False">
+                
+            </Frame>
+            <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" Text="Scheduled Work Days"
+                   FontAttributes="Bold" BackgroundColor="Beige" FontSize="Medium"/>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="5" FontAttributes="Bold" BackgroundColor="Beige"/>
+
+            <Frame BackgroundColor="Red" Grid.Row="3" Grid.ColumnSpan="2" HasShadow="False">
+                
+            </Frame>
+            <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand"
+                   Text="Daily BDFT Capacity Walls" FontAttributes="Bold" BackgroundColor="Red" TextColor="White"/>
+            <ListView Grid.ColumnSpan="2" Grid.Row="4" ItemsSource="{Binding WallLines}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding LineName}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" WidthRequest="200"/>
+                                <Label Text="{Binding DefaultBoardFeet}" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -12,9 +12,6 @@ namespace WorkScheduler.Models
         public ObservableCollection<Phase> Phases { get; set; }
 
         public string SelectedJobType { get; set; }
-        //public string SelectedPhase { get; set; }
-
-        //public string SelectedBuildingSystem { get; set; }
 
         public DateTime DeliveryDate { get; set; }
 
